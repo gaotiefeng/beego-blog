@@ -19,6 +19,7 @@ func init()  {
 
 	beego.BConfig.Listen.HTTPPort = 8030
 	beego.BConfig.WebConfig.EnableDocs = true
+	beego.SetStaticPath("/resources","resources")
 }
 
 func main(){
