@@ -24,7 +24,7 @@ go run main.go
     /blog/index
 ```
 
-![!文档地址](https://beego.me/docs/install/bee.md)
+[beego 文档地址](https://beego.me/docs/install/bee.md)
 
 ```安装 bee 工具
 go get github.com/beego/bee
