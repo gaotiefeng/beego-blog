@@ -11,3 +11,8 @@ func (this *BlogController) Index() {
 	this.Data["language"] = "go controller"
 	this.TplName = "index.html"
 }
+
+func (this *BlogController) Detail()  {
+
+	this.TplName = "blog.html"
+}
