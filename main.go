@@ -22,6 +22,7 @@ func init()  {
 	beego.SetStaticPath("/resources","resources")
 }
 
+
 func main(){
 
 	beego.Run()

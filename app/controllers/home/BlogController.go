@@ -8,6 +8,6 @@ type BlogController struct {
 
 func (this *BlogController) Index() {
 	this.Data["content"] = "welcome to blog"
-	this.Data["language"] = "go"
+	this.Data["language"] = "go controller"
 	this.TplName = "index.html"
 }

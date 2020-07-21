@@ -18,3 +18,16 @@ go run main.go
     /user/update
     /user/delete
 ```
+
+###### 博客列表
+```
+    /blog/index
+```
+
+![!文档地址](https://beego.me/docs/install/bee.md)
+
+```安装 bee 工具
+go get github.com/beego/bee
+#热更新controller 会自动更新
+bee run
+```
