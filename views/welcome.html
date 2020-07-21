@@ -14,12 +14,17 @@
 </div>
 
 <div class="nav">
-    <ul>
-        <li>php</li>
-        <li>{{.language}}</li>
-        <li>python</li>
-        <li>java</li>
-    </ul>
+    <div class="wrap-nav">
+        <div class="menu">
+            <ul>
+                <li><a href="/blog/index">Home</a></li>
+                <li><a href="/blog/detail">Blog</a></li>
+                <li><a href="/blog/index">{{.language}}</a></li>
+                <li><a href="/blog/index">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <div class="content">
@@ -40,14 +45,32 @@
     }
     .nav {
         color: black;
-    }.nav ul{
-         list-style-type: none;
-         background: coral;
+    }.nav .wrap-nav {
+       display: inline-block;
+       background: #91DBD1;
+       width: 100%;
+   }
+    .nav ul{
+        list-style-type: none;
+        font-size: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        vertical-align: top;
     }.nav ul li{
          float: left;
-         height: 30px;
-         line-height: 30px;
-    }
+         height: 50px;
+         line-height: 50px;
+    }.nav ul li a{
+      font-size: 18px;
+      color: #ffffff;
+      display: block;
+      padding: 6px 30px;
+      margin-bottom: 5px;
+      z-index: 6;
+      position: relative;
+  }
     .content {
         width: 60px;
         height: 80px;
