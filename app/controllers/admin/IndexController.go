@@ -7,5 +7,6 @@ type IndexController struct {
 }
 
 func (this *IndexController) Index()  {
+	this.Layout = "admin/layout.html"
 	this.TplName = "admin/index.html"
 }
