@@ -20,7 +20,7 @@ func (this *LoginController) ResponseError (code int,message string, data interf
 func (this *LoginController) ResponseSuccess (message string, data interface{},count int64) () {
 
 	var json interface{}
-	json = map[string]interface{}{"code":constants.ADMIN_SUCCESS,"msg":message,"data":data,"count":count}
+	json = map[string]interface{}{"code":constants.ADMIN_SUCCESS,"msg":message,"count":count,"data":data}
 	this.Data["json"] = json
 	this.ServeJSON()
 }

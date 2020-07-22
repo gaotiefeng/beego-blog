@@ -12,7 +12,7 @@ type ArticleController struct {
 
 func (this *ArticleController) List()  {
 
-	offset, _ := this.GetInt("offset",0)
+	offset, _ := this.GetInt("page",0)
 	limit, _ := this.GetInt("limit",10)
 
 	count,list,err := Dao.ArticleDaoList(offset,limit)
@@ -20,7 +20,6 @@ func (this *ArticleController) List()  {
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)
 	}
-	//data := map[string]interface{}{"count":count,"items":list}
 
 	this.ResponseSuccess("查询成功",list,count)
 }
