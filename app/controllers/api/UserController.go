@@ -87,7 +87,7 @@ func (this *UserController) List()  {
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)
 	}
-	data := map[string]interface{}{"count":count,"items":list,}
+	data := map[string]interface{}{"count":count,"items":list}
 
 	this.ResponseSuccess("查询成功",data)
 }

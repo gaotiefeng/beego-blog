@@ -10,4 +10,7 @@ func init() {
 
 	beego.Router("/",&controllers.BaseController{},"get:Welcome")
 	beego.Router("/admin/index/index",&admin.IndexController{},"get:Index")
+	beego.Router("/admin/index/test",&admin.IndexController{},"get:Test")
+	beego.Router("/admin/article/list",&admin.ArticleController{},"get:List")
+
 }
