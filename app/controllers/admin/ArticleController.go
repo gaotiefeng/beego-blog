@@ -12,8 +12,9 @@ type ArticleController struct {
 
 func (this *ArticleController) List()  {
 
-	offset, _ := this.GetInt("page",0)
+	page, _ := this.GetInt("page",0)
 	limit, _ := this.GetInt("limit",10)
+	offset := (page-1) * limit
 
 	count,list,err := Dao.ArticleDaoList(offset,limit)
 
