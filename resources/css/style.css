@@ -124,7 +124,7 @@ nav .wrap-nav{display: inline-block; background: #91DBD1; width: 100%;}
 #sidebar .box .heading h2{display:inline; padding:0 10px;}
 #sidebar .box .content {padding:15px}
 #sidebar .box .content ul{list-style-type:none; text-align: center;}
-#sidebar .box .content ul li{border-bottom: 1px solid #E1E1E1; padding:5px;}
+#sidebar .box .content ul li{border-bottom: 1px solid #ddf1f0; padding:5px;}
 #sidebar .box .content img{ float:left; padding:3px; border:1px solid #EEEEEE; margin-right:10px;}
 #sidebar .box .content .post {margin-bottom: 20px;}
 #sidebar .box .content .post h4{font-weight:normal;}
