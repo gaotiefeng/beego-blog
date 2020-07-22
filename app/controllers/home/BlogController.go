@@ -12,7 +12,7 @@ type BlogController struct {
 func (this *BlogController) Index() {
 	this.Data["content"] = "welcome to blog"
 	this.Data["language"] = "go controller"
-	this.TplName = "index.html"
+	this.TplName = "home/index.html"
 }
 
 /**
@@ -20,5 +20,12 @@ func (this *BlogController) Index() {
  */
 func (this *BlogController) Detail()  {
 
-	this.TplName = "blog.html"
+	this.TplName = "home/blog.html"
+}
+
+func (this *BlogController) Test() {
+
+	println("12211221")
+	this.Data["json"] = map[string]interface{}{"code": 200, "message": "hello word test"}
+	this.ServeJSON()
 }
