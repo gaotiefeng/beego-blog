@@ -56,8 +56,8 @@ article:after, article:before{clear: both; content: '\0020'; display: block; vis
 /* -------------------------------------------- */
 /* ------------------Style--------------------- */
 html, body {width:100%; padding:0; margin:0;}
-body {background: #1df3b6;color: #A5A5A5;font: 16px/25px 'Droid Sans',sans-serif;}
-body .wrap-body{background:#ffffff; margin: 30px auto; padding: 30px;}
+body {background: #ffffff;color: #A5A5A5;font: 16px/25px 'Droid Sans',sans-serif;}
+body .wrap-body{background:#ffffff; margin: 10px;}
 
 a{color: #76D2C5;text-decoration: none;}
 a:hover {color: #474747; text-decoration: none;}
@@ -86,8 +86,6 @@ header #logo {background:#76D2C5; width: 100%; text-align: center; padding: 40px
 header #logo h1{font-size: 60px; line-height: 80px; color: #ffffff;}
 
 header .top {height: 40px;}
-header .top .socials ul {list-style: none;}
-header .top .socials ul li {position: relative;float: left; margin: 5px 0 5px 5px;}
 
 #search {width: 258px; float: right; position: relative; padding: 5px;}
 .button-search {	position: absolute;	left: 0px;	background: url('../images/button-search.png') center center no-repeat;	width: 30px;	height: 32px;	border-right: 1px solid #EEEEEE;	cursor: pointer;}
