@@ -1,6 +1,7 @@
 *.idea
 !*.idea
 .idea/
-config/Database.go
+conf/Database.go
 beego-blog.exe
 beego-blog.exe~
+conf/app.conf

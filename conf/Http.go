@@ -1,4 +1,4 @@
-package config
+package conf
 
 const HOST = "http://www.tfuu.cn"
 

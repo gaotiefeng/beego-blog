@@ -39,11 +39,13 @@ func (this *BlogController) Detail()  {
 
 	if id == 0 {
 		this.TplName = "404.html"
+		return
 	}
 
 	article,error := Dao.ArticleDaoFind(id)
-	if error == nil {
+	if error != nil {
 		this.TplName = "500.html"
+		return
 	}
 	this.Data["data"] = article
 	this.TplName = "home/blog.html"

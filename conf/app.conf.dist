@@ -1,0 +1,20 @@
+appname = bee-blog
+httpaddr = "127.0.0.1"
+httpport = 9090
+runmode ="dev"
+autorender = false
+recoverpanic = false
+viewspath = "views"
+
+mysqluser = "root"
+mysqlpass = "root"
+mysqlurls = "127.0.0.1"
+mysqldb   = "beego"
+
+
+[dev]
+httpport = 8030
+[prod]
+httpport = 8008
+[test]
+httpport = 8888

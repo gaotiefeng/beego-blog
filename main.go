@@ -2,7 +2,7 @@ package main
 
 import (
 	"beego/app/models"
-	"beego/config"
+	"beego/conf"
 	_ "beego/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
@@ -11,14 +11,13 @@ import (
 
 func init()  {
 
-	dataSrouce := config.MYSQL_USERNAME + ":" + config.MYSQL_PASSWORD + "@tcp("+config.MYSQL_HOST+":"+config.MYSQL_PORT+")/" + config.MYSQL_DATABASE + "?charset=utf8"
+	dataSrouce := conf.MYSQL_USERNAME + ":" + conf.MYSQL_PASSWORD + "@tcp("+ conf.MYSQL_HOST+":"+ conf.MYSQL_PORT+")/" + conf.MYSQL_DATABASE + "?charset=utf8"
 
 	orm.RegisterDataBase("default","mysql",dataSrouce,60)
 
 	orm.RegisterModel(new(models.User))
 
-	beego.BConfig.Listen.HTTPPort = 8030
-	beego.BConfig.WebConfig.EnableDocs = true
+
 	beego.SetStaticPath("/resources","resources")
 }
 
