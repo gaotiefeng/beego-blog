@@ -3,3 +3,4 @@
 .idea/
 config/Database.go
 beego-blog.exe
+beego-blog.exe~
