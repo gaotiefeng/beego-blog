@@ -5,6 +5,7 @@ import (
 	"beego/conf"
 	_ "beego/routers"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -23,6 +24,10 @@ func init()  {
 
 
 func main(){
+
+	logs.SetLogger(logs.AdapterConsole, `{"level":1,"color":true}`)
+	/*logs.Async(1e3)
+	logs.SetLogger(logs.AdapterFile, `{"filename":"runtime/logs/beego.log"}`)*/
 
 	beego.Run()
 }

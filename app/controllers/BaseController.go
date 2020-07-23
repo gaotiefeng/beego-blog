@@ -11,6 +11,8 @@ type BaseController struct {
 }
 
 func (c *BaseController) Welcome() {
+
+
 	//c.Data["json"] = map[string]interface{}{"code": 200, "message": "hello word"}
 	//c.ServeJSON()
 	c.Data["content"] = "welcome to blog"

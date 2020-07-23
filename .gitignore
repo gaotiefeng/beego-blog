@@ -5,3 +5,4 @@ conf/Database.go
 beego-blog.exe
 beego-blog.exe~
 conf/app.conf
+runtime/logs/*

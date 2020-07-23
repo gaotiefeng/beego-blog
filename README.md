@@ -22,6 +22,12 @@ go run main.go
 ###### 博客列表
 ```
     /blog/index
+    /blog/detail
+```
+
+##### 后台 ui layui
+```
+    /admin/index/index
 ```
 
 [beego 文档地址](https://beego.me/docs/install/bee.md)
