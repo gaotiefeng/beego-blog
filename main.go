@@ -8,6 +8,8 @@ import (
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+
+	_ "github.com/astaxie/beego/cache/redis"
 )
 
 func init()  {
@@ -26,8 +28,7 @@ func init()  {
 func main(){
 
 	logs.SetLogger(logs.AdapterConsole, `{"level":1,"color":true}`)
-	/*logs.Async(1e3)
-	logs.SetLogger(logs.AdapterFile, `{"filename":"runtime/logs/beego.log"}`)*/
+	logs.Async(1e3)
 
 	beego.Run()
 }

@@ -43,7 +43,7 @@ CREATE TABLE `article` (
   `image` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文件表';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文章表';
 
 INSERT INTO `article` VALUES (1, 'php', '09 Jul 2020\r\nPHP 7.4.8 Released!\r\nThe PHP development team announces the immediate availability of PHP 7.4.8. This is a security release impacting the official Windows builds of PHP.\r\n\r\nFor windows users running an official build, this release contains a patched version of libcurl addressing CVE-2020-8169.\r\n\r\nFor all other consumers of PHP, this is a bug fix release.\r\n\r\nAll PHP 7.4 users are encouraged to upgrade to this version.\r\n\r\nFor source downloads of PHP 7.4.8 please visit our downloads page, Windows source and binaries can be found on windows.php.net/download/. The list of changes is recorded in the ChangeLog.', 'https://www.php.net/images/logos/php-logo.svg', '2020-7-23 09:33:42');
 INSERT INTO `article` VALUES (2, 'go', 'Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。\r\n罗伯特·格瑞史莫（Robert Griesemer），罗勃·派克（Rob Pike）及肯·汤普逊（Ken Thompson）于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。Go于2009年11月正式宣布推出，成为开放源代码项目，并在Linux及Mac OS X平台上进行了实现，后来追加了Windows系统下的实现。在2016年，Go被软件评价公司TIOBE 选为“TIOBE 2016 年最佳语言”。 目前，Go每半年发布一个二级版本（即从a.x升级到a.y）。 [1]', 'http://c.biancheng.net/uploads/allimg/181214/1-1Q214150602U9.jpg', '2020-7-5 09:41:31');

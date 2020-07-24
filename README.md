@@ -5,7 +5,9 @@
 ###### 启动
 
 ```
-cp config/Database.go.dist config/Database.go
+cp conf/app.conf.dist conf/app.conf
+cp conf/Database.go.dist config/Database.go
+
 go run main.go
 ```
 
