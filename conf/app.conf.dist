@@ -2,7 +2,8 @@ appname = bee-blog
 httpaddr = "127.0.0.1"
 httpport = 9090
 runmode ="dev"
-autorender = false
+autorender = true
+
 recoverpanic = false
 viewspath = "views"
 
@@ -15,6 +16,6 @@ mysqlprot = 3306
 [dev]
 httpport = 8080
 [prod]
-httpport = 8008
+httpport = 8080
 [test]
-httpport = 8888
+httpport = 8080
