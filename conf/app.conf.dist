@@ -13,7 +13,7 @@ mysqldb   = "beego"
 mysqlprot = 3306
 
 [dev]
-httpport = 8030
+httpport = 8080
 [prod]
 httpport = 8008
 [test]
