@@ -12,12 +12,16 @@ type BaseController struct {
 
 func (c *BaseController) Welcome() {
 
-
 	//c.Data["json"] = map[string]interface{}{"code": 200, "message": "hello word"}
 	//c.ServeJSON()
 	c.Data["content"] = "welcome to blog"
 	c.Data["language"] = "首页"
 	c.TplName = "welcome.html"
+}
+
+func (c *BaseController) Notfound() {
+
+	c.TplName = "404.tpl"
 }
 
 func Success(code int,message string,data interface{}) (json interface{}){
