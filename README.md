@@ -6,7 +6,6 @@
 
 ```
 cp conf/app.conf.dist conf/app.conf
-cp conf/Database.go.dist config/Database.go
 
 go run main.go
 ```

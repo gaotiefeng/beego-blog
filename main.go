@@ -2,19 +2,25 @@ package main
 
 import (
 	"beego/app/models"
-	"beego/conf"
 	_ "beego/routers"
 	"github.com/astaxie/beego"
+	_ "github.com/astaxie/beego/cache/redis"
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-
-	_ "github.com/astaxie/beego/cache/redis"
 )
 
 func init()  {
 
-	dataSrouce := conf.MYSQL_USERNAME + ":" + conf.MYSQL_PASSWORD + "@tcp("+ conf.MYSQL_HOST+":"+ conf.MYSQL_PORT+")/" + conf.MYSQL_DATABASE + "?charset=utf8"
+	host := beego.AppConfig.String("mysqlhost")
+	prot := beego.AppConfig.String("mysqlprot")
+	user := beego.AppConfig.String("mysqluser")
+	pass := beego.AppConfig.String("mysqlpass")
+	db := beego.AppConfig.String("mysqldb")
+
+	logs.SetLogger(logs.AdapterConsole, `{"level":1,"color":true}`)
+	logs.Debug(host)
+	dataSrouce := user + ":" + pass + "@tcp("+ host +":"+ prot +")/" + db + "?charset=utf8"
 
 	orm.RegisterDataBase("default","mysql",dataSrouce,60)
 
@@ -27,8 +33,7 @@ func init()  {
 
 func main(){
 
-	logs.SetLogger(logs.AdapterConsole, `{"level":1,"color":true}`)
-	logs.Async(1e3)
+	//logs.Async(1e3)
 
 	beego.Run()
 }

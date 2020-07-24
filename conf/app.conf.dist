@@ -8,9 +8,9 @@ viewspath = "views"
 
 mysqluser = "root"
 mysqlpass = "root"
-mysqlurls = "127.0.0.1"
+mysqlhost = "127.0.0.1"
 mysqldb   = "beego"
-
+mysqlprot = 3306
 
 [dev]
 httpport = 8030

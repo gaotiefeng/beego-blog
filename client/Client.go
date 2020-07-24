@@ -1,7 +1,7 @@
 package client
 
 import (
-	"beego/conf"
+	"beego/app/constants"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -9,8 +9,8 @@ import (
 )
 
 func Get()  {
-	host := conf.HOST
-	url := host + conf.API + "?user=go"
+	host := constants.HOST
+	url := host + constants.API + "?user=go"
 
 	resp, err := http.Get(url)
 	if err != nil {
@@ -28,8 +28,8 @@ func Get()  {
 }
 
 func Post()  {
-	host := conf.HOST
-	url := host + conf.API
+	host := constants.HOST
+	url := host + constants.API
 
 	resp, err := http.Post(url,
 		"application/x-www-form-urlencoded",
