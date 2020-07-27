@@ -61,10 +61,10 @@
         var user_name = $("#user_name").val();
         var password = $("#password").val();
         if (user_name == '') {
-            $("#user_err").text("用户名不能为空");return;
+            $("#user_err").text("用户名不能为空");return false;
         }
         if (password == '') {
-            $("#pass_err").text("密码不能为空");return;
+            $("#pass_err").text("密码不能为空");return false;
         }
         $("#user_err").text("");
         $("#pass_err").text("");
