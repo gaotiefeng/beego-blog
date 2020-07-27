@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>登录</title>
+    <link href="/resources/login/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- -->
+    <script>var __links = document.querySelectorAll('a');function __linkClick(e) { parent.window.postMessage(this.href, '*');} ;for (var i = 0, l = __links.length; i < l; i++) {if ( __links[i].getAttribute('data-t') == '_blank' ) { __links[i].addEventListener('click', __linkClick, false);}}</script>
+    <script src="/resources/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script>$(document).ready(function(c) {
+            $('.alert-close').on('click', function(c){
+                $('.message').fadeOut('slow', function(c){
+                    $('.message').remove();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- contact-form -->
+<div class="message warning">
+    <div class="inset">
+        <div class="login-head">
+            <h1>Login Form</h1>
+            <div class="alert-close"> </div>
+        </div>
+        <form>
+            <li>
+                <input id="user_name" placeholder="请输入用户名" type="text" class="text" value="" ><a href="#" class=" icon user"></a>
+            </li>
+            <div class="clear"> </div>
+            <p style="text-align: left;color: red;" id="user_err"></p>
+
+            <li>
+                <input id="password" placeholder="请输入密码" type="password" value=""> <a href="#" class="icon lock"></a>
+            </li>
+            <div class="clear"> </div>
+
+            <p style="text-align: left;color: red;"  id="pass_err"></p>
+
+            <div class="submit">
+                <input type="submit" onclick="myFunction()" value="Sign in" >
+                <h4><a href="#">Lost your Password ?</a></h4>
+                <div class="clear">  </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+</div>
+<div class="clear"> </div>
+<!--- footer --->
+<div class="footer">
+    <p></p>
+</div>
+</body>
+<script >
+    function myFunction(){
+        var user_name = $("#user_name").val();
+        var password = $("#password").val();
+        if (user_name == '') {
+            $("#user_err").text("用户名不能为空");return;
+        }
+        if (password == '') {
+            $("#pass_err").text("密码不能为空");return;
+        }
+        $("#user_err").text("");
+        $("#pass_err").text("");
+        $.ajax({
+            type: "POST",
+            url:"/admin/login/login",
+            data: {"user_name":user_name,"password":password},
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+
+            }
+        });
+    }
+</script>
+</html>

@@ -9,6 +9,17 @@ type LoginController struct {
 	beego.Controller
 }
 
+
+func (this *LoginController) Index()  {
+	this.TplName = "admin/login.html"
+}
+
+func (this *LoginController) Login()  {
+	var count int64
+	var json interface{}
+	this.ResponseSuccess("登录成功",json,count)
+}
+
 func (this *LoginController) ResponseError (code int,message string, data interface{}) () {
 
 	var json interface{}
