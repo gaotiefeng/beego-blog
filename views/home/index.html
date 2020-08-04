@@ -4,45 +4,22 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-
-    <!-- Basic Page Needs
-  ================================================== -->
 	<meta charset="utf-8">
-	<title>博客</title>
+	<title>blog</title>
 	<meta name="description" content="blog">
 	<meta name="author" content="www.tfuu.cn">
-	
-    <!-- Mobile Specific Metas
-  ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- CSS
-  ================================================== -->
-  	<link rel="stylesheet" href="/resources/home/css/zerogrid.css">
 	<link rel="stylesheet" href="/resources/home/css/style.css">
-    <link rel="stylesheet" href="/resources/home/css/responsive.css">
-    <!--[if lt IE 9]>
-	<script src="/resources/home/js/html5.js"></script>
-	<script src="/resources/home/js/css3-mediaqueries.js"></script>
-	<![endif]-->
-	
-	<link href='/resources/home/images/favicon.ico' rel='icon' type='image/x-icon'/>
-    
 </head>
 <body>
-<div class="wrap-body zerogrid">
+<div class="wrap-body">
+	<top>
+			<h1>blog</h1>
+	</top>
 <!--------------Header--------------->
 <header>
 	<div class="wrap-header">
-		
-		<div class="top">
-
-		</div>
-		
-		<div id="logo">
-			<h1>tfuu.cn</h1>
-		</div>
-		
+	<div>
 		<nav>
 			<div class="wrap-nav">
 				<div class="menu">
@@ -56,88 +33,41 @@
 				</div>
 			</div>
 		</nav>
-		<div id="search">
-			<div class="button-search"></div>
-			<input type="text" value="Search..." onfocus="if (this.value == &#39;Search...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search...&#39;;}">
-		</div>
+	</div>
+
 	</div>
 </header>
 
 <!--------------Content--------------->
-<section id="content">
-	<div class="wrap-content">
-		<div class="row block">
-			<div id="main-content" class="col-2-3">
-				<div class="wrap-col">
-					{{range .data}}
-					<article>
-						<div class="heading">
-							<h2><a href="/blog/detail?id={{.Id}}">{{.Name}}</a></h2>
-						</div>
-						<div class="content">
-							<img src="{{.Image}}" width="250px" height="100px"/>
-							<p> {{.Content}}</p>
-		
-						</div>
-						<div class="info">
-							<p>{{.CreatedAt}}<a href="#"></a></p>
-						</div>
-					</article>
-					{{end}}
-					<div style="text-align: center;margin:250px auto;">
-						<div id="pager" class="pager clearfix">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="sidebar" class="col-1-3">
-				<div class="wrap-col">
-					<div class="box">
-						<div class="heading"><h2>About us</h2></div>
-						<div class="content">
-							<img src="/resources/home/images/zerotheme.jpg" style="border: 0px;"/>
-							<p>Html5 Templates created by chinaz. You can use and modify the template for both personal and commercial use. You must keep all copyright information and credit links in the template and associated files.</p>
-						</div>
-					</div>
-					<div class="box">
-						<div class="heading"><h2>分类</h2></div>
-						<div class="content">
-							<ul>
-								<li><a href="http://www.tfuu.cn/">php</a></li>
-								<li><a href="http://www.tfuu.cn/">python</a></li>
-								<li><a href="http://www.tfuu.cn/">go</a></li>
-								<li><a href="http://www.tfuu.cn/">java</a></li>
-								<li><a href="http://www.tfuu.cn/">c++</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="box">
-						<div class="heading"><h2>recommend blog</h2></div>
-						<div class="content">
-							<div class="post">
-								<img src="/resources/home/images/img4.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-							<div class="post">
-								<img src="/resources/home/images/img5.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-							<div class="post">
-								<img src="/resources/home/images/img1.jpg" width="50px"/>
-								<h4><a href="#">Lorem ipsum dolor sit</a></h4>
-								<p>November 11 ,2012</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="container">
+	<div class="menu">
+		<div class="menu-top">
+			<nav class="TopstoryTabs Topstory-tabs">
+				<a  href="/">推荐</a>
+				<a href="/blog/index">关注</a>
+				<a href="/blog/detail">热榜</a>
+			</nav>
 		</div>
-	</div>
-</section>
+		<div class="menu-content">
+			{{range .data}}
+			<article>
+				<div class="title">
+					<h2><a href="/blog/detail?id={{.Id}}">{{.Name}}</a></h2>
+				</div>
+				<div class="content">
+					<p> <img src="{{.Image}}" width="250px" height="100px"/></p>
+					<p> {{.Content}}</p>
 
+				</div>
+				<div class="info">
+					<p>{{.CreatedAt}}<a href="#"></a></p>
+				</div>
+			</article>
+			{{end}}
 
+		</div>
+</div>
+</div>
 </div>
 </body>
 </html>
