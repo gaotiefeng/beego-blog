@@ -1,11 +1,7 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>blog</title>
+	<title>go</title>
 	<meta name="description" content="blog">
 	<meta name="author" content="www.tfuu.cn">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,27 +9,21 @@
 </head>
 <body>
 <div class="wrap-body">
-	<top>
-			<h1>blog</h1>
-	</top>
+
 <!--------------Header--------------->
 <header>
 	<div class="wrap-header">
-	<div>
-		<nav>
-			<div class="wrap-nav">
-				<div class="menu">
-					<ul>
-						<li><a href="/blog/index">PHP</a></li>
-						<li><a href="/blog/detail">GO</a></li>
-						<li><a href="/blog/index">JAVA</a></li>
-						<li><a href="/blog/index">C++</a></li>
-						<li><a href="#">PYTHON</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</div>
+		<div>
+			<nav class="wrap-nav">
+				<ul>
+					<li><a href="/blog/index">PHP</a></li>
+					<li><a href="/blog/detail">GO</a></li>
+					<li><a href="/blog/index">JAVA</a></li>
+					<li><a href="/blog/index">C++</a></li>
+					<li><a href="#">PYTHON</a></li>
+				</ul>
+			</nav>
+		</div>
 
 	</div>
 </header>
@@ -41,14 +31,6 @@
 <!--------------Content--------------->
 <div class="container">
 	<div class="menu">
-		<div class="menu-top">
-			<nav class="TopstoryTabs Topstory-tabs">
-				<a  href="/">推荐</a>
-				<a href="/blog/index">关注</a>
-				<a href="/blog/detail">热榜</a>
-			</nav>
-		</div>
-		<div class="menu-content">
 			{{range .data}}
 			<article>
 				<div class="title">
@@ -64,7 +46,6 @@
 				</div>
 			</article>
 			{{end}}
-		</div>
 	</div>
 	<div class="menu-right">
 		<div class="gg">
@@ -77,4 +58,22 @@
 </div>
 </body>
 </html>
+<style>
+	.wrap-header {
+		width: 100%;
+		height: 60px;
+		background: #00FF00;
+		text-align: center;
+	}
+	.wrap-header .wrap-nav ul{
+		text-align: center;
+	}
+	.wrap-header .wrap-nav ul li {
+		float: left;
+		height: 60px;
+		line-height: 60px;
+		padding-left: 40px;
+	}
+
+</style>
 
