@@ -48,7 +48,7 @@ func (this *BlogController) Detail()  {
 		return
 	}
 	this.Data["data"] = article
-	this.TplName = "home/blog.html"
+	this.TplName = "home/detail.html"
 }
 
 func (this *BlogController) Test() {

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="/resources/home/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/resources/home/css/wallpaper.css">
+		<link rel="stylesheet" href="/resources/layui/css/layui.css?v=5">
+		<title>技匠精神</title>
+	</head>
+
+	<body style="background-color:#e0e3ed;">
+		<style>
+			.ikz-nav-item {
+				display: flex;
+				align-items: center;
+			}
+			
+			.ikz-nav-item-detail {
+				display: flex;
+			}
+			
+			.ikz-nav-item a {
+				margin-right: 16px;
+			}
+			
+			.ikz-nav-item i {
+				font-size: 22px;
+				font-weight: 500;
+			}
+		</style>
+
+		<!-- 头部 开始 -->
+		<div class="layui-header header trans_3">
+			<div class="main index_main">
+				<a class="logo" href="/"><img src="/uploads/images/20161229/ee5e446aec809c208dc07a4dfa3dec39.png" alt="js&jquery操作页面中iframe内的dom元素-老张博客-一个PHP程序员的个人博客网站"></a>
+				<ul class="layui-nav" lay-filter="top_nav">
+					<li class="layui-nav-item home">
+						<a href="/">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="/article-index/1.html">学无止境</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/article-lists/8.html">杂谈</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/9.html">PHP</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/10.html">建站</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/11.html">WEB前端</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/15.html">LzCMS</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/16.html">Python</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/17.html">微信小程序</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="/download-index/2.html">分享无价</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/download-lists/13.html">源码分享</a>
+							</dd>
+							<dd>
+								<a href="/download-lists/14.html">jQuery特效</a>
+							</dd>
+							<dd>
+								<a href="/download-lists/18.html">软件工具</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="/link-lists/3.html">日记</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="/page/5.html">关于</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/page/5.html">关于老张</a>
+							</dd>
+							<dd>
+								<a href="/page/6.html">关于LzCMS</a>
+							</dd>
+							<dd>
+								<a href="http://www.phplaozhang.com/feedback.html">留言</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<div class="title">老张博客</div>
+				<form action="/search.html" mothod="post" class="head_search trans_3 layui-form">
+					<div class="layui-form-item trans_3">
+						<span class="close trans_3"><i class="layui-icon">&#x1006;</i> </span>
+						<div class="layui-input-inline trans_3">
+							<select name="model_id">
+								<option value="2" selected>文章模型</option>
+								<option value="3">图集模型</option>
+								<option value="5">下载模型</option>
+							</select>
+						</div>
+						<input type="text" name="keywords" placeholder="搜索" autocomplete="off" class="search_input trans_3">
+						<button class="layui-btn" lay-submit="" style="display: none;"></button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<div class="header_back"></div>
+		<!-- 头部 结束 -->
+		<!-- 左边导航 开始 -->
+		<div class="layui-side layui-bg-black left_nav trans_2">
+			<div class="layui-side-scroll">
+				<ul class="layui-nav layui-nav-tree" lay-filter="left_nav">
+					<li class="layui-nav-item home">
+						<a href="/">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:void();">学无止境</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/article-lists/8.html">杂谈</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/9.html">PHP</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/10.html">建站</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/11.html">WEB前端</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/15.html">LzCMS</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/16.html">Python</a>
+							</dd>
+							<dd>
+								<a href="/article-lists/17.html">微信小程序</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:void();">分享无价</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/download-lists/13.html">源码分享</a>
+							</dd>
+							<dd>
+								<a href="/download-lists/14.html">jQuery特效</a>
+							</dd>
+							<dd>
+								<a href="/download-lists/18.html">软件工具</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="/link-lists/3.html">日记</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:void();">关于</a>
+						<dl class="layui-nav-child">
+							<!-- 二级菜单 -->
+							<dd>
+								<a href="/page/5.html">关于老张</a>
+							</dd>
+							<dd>
+								<a href="/page/6.html">关于LzCMS</a>
+							</dd>
+							<dd>
+								<a href="http://www.phplaozhang.com/feedback.html">留言</a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="left_nav_mask"></div>
+		<div class="left_nav_btn"><i class="layui-icon">&#xe602;</i></div>
+		<!-- 左边导航 结束 -->
+		<!-- 面包屑导航 开始 -->
+		<div class="main breadcrumb_nav trans_3">
+			<span class="layui-breadcrumb" lay-separator="—">
+	  <a href="/">首页</a>
+				<a href="/article-index/1.html">学无止境</a>
+				<a href="/article-lists/11.html">WEB前端</a>
+				<a><cite>{{.data.Name}}</cite></a>
+			</span>
+		</div>
+		<!-- 面包屑导航 结束 -->
+		<!-- 文章 开始 -->
+		<div class="main">
+			<div class="page_left">
+				<div class="detail_container trans_3">
+					<h1>{{.data.Name}}</h1>
+					<div class="date_hits"><span><i>发布时间：</i>{{.data.CreatedAt}}</span><span>
+							<i>热度：</i> 2335 ℃</span><span><i>评论数：</i>
+							<a href="#SOHUCS" id="changyan_count_unit"></a>
+						</span></div>
+					<div class="content">
+						<div class="postTitle" style="box-sizing: border-box; font-size: 14.7px; font-weight: bold; margin-bottom: 10px; color: rgb(75, 75, 75); font-family: Verdana, Arial, Helvetica, sans-serif; white-space: normal;">
+							<h1 style="margin-top: 10px; margin-bottom: 10px; font-size: 14.7px; color: rgb(102, 102, 102); box-sizing: border-box; font-weight: bold;"><br/></h1></div>
+						<div id="cnblogs_post_body" class="blogpost-body" style="box-sizing: border-box; margin-bottom: 20px; word-break: break-word; color: rgb(75, 75, 75); font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; white-space: normal;">
+							<div style="box-sizing: border-box;">
+								<p style="box-sizing: border-box; margin: 10px auto;">{{.data.Content}}</p>
+								</div>
+						</div>
+						<p><br/></p>
+					</div>
+					<div class="keywords">
+						<p>error</p>
+					</div>
+					<div class="prev_next">
+						<div class="prev">上一篇：
+							<a href="/article-lists/11.html">返回列表</a>
+						</div>
+						<div class="next">下一篇：
+							<a href="/article/93.html">js&jq ,json字符串转换json对象 ,json对象转换json字符串</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="commont_containr">
+						<!--【畅言】表情评价-->
+						<div id="cyEmoji" role="cylabs" data-use="emoji" sid="1196"></div>
+						<!--【畅言】PC和WAP自适应版-->
+						<div id="SOHUCS" sid="1196"></div>
+					</div>
+
+				</div>
+			</div>
+			<div class="page_right">
+				<div class="second_categorys_container">
+					<h3>栏目导航</h3>
+					<ol class="seond_category trans_3">
+						<li>
+							<a href="/article-lists/8.html" class="layui-btn layui-btn-primary trans_1">杂谈</a>
+						</li>
+						<li>
+							<a href="/article-lists/9.html" class="layui-btn layui-btn-primary trans_1">PHP</a>
+						</li>
+						<li>
+							<a href="/article-lists/10.html" class="layui-btn layui-btn-primary trans_1">建站</a>
+						</li>
+						<li class="selected">
+							<a href="/article-lists/11.html" class="layui-btn layui-btn-primary trans_1">WEB前端</a>
+						</li>
+						<li>
+							<a href="/article-lists/15.html" class="layui-btn layui-btn-primary trans_1">LzCMS</a>
+						</li>
+						<li>
+							<a href="/article-lists/16.html" class="layui-btn layui-btn-primary trans_1">Python</a>
+						</li>
+						<li>
+							<a href="/article-lists/17.html" class="layui-btn layui-btn-primary trans_1">微信小程序</a>
+						</li>
+					</ol>
+				</div>
+
+				<div class="hot_list">
+					<h3>相关文章</h3>
+					<ol class="page_right_list trans_3">
+						<li>
+							<a href="/article/6.html">阻止a标签href默认跳转事件</a><span class="hits"> 4854 ℃ </span></li>
+						<li>
+							<a href="/article/53.html">CSS控制文字，超出部分显示省略号，多行文本超出显示省略号</a><span class="hits"> 4623 ℃ </span></li>
+						<li>
+							<a href="/article/89.html">HTML5事件—visibilitychange 页面可见性改变事件</a><span class="hits"> 4261 ℃ </span></li>
+						<li>
+							<a href="/article/48.html">曾经用过的十大富文本编辑器</a><span class="hits"> 3753 ℃ </span></li>
+						<li>
+							<a href="/article/93.html">js&jq ,json字符串转换json对象 ,json对象转换json字符串</a><span class="hits"> 3713 ℃ </span></li>
+						<li>
+							<a href="/article/90.html">通过CSS实现 文字渐变色 的两种方式</a><span class="hits"> 3710 ℃ </span></li>
+						<li>
+							<a href="/article/22.html">JS判断当前浏览器内核以及版本</a><span class="hits"> 3572 ℃ </span></li>
+						<li>
+							<a href="/article/80.html">防止自己的页面不被其他网站的页面的iframe引用</a><span class="hits"> 3451 ℃ </span></li>
+						<li>
+							<a href="/article/28.html">OwlCarousel2支持触摸屏的响应式轮播图，jQuery轮播图插件</a><span class="hits"> 3025 ℃ </span></li>
+						<li>
+							<a href="/article/96.html">js&jquery操作页面中iframe内的dom元素</a><span class="hits"> 2335 ℃ </span></li>
+					</ol>
+				</div>
+				<div class="mobile_qrcode_container">
+
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!-- 底部 结束 -->
+		<!-- 文章 结束 -->
+		<!-- 底部 开始 -->
+		<ul class="layui-fixbar">
+
+			<li id="fixbar_avatar" class="hidden"><img src="" alt="头像">
+				<div class="fixbar_member_info trans_3"><span id="logout_btn">退了</span></div>
+			</li>
+			<li class="layui-icon qr_code">&#xe63b;<img class="qr_code_pic" src="/template/laozhang/static/images/wechat_qrcode.jpg" alt="微信公众号二维码"></li>
+			<li class="layui-icon layui-fixbar-top" id="to_top">&#xe604;</li>
+		</ul>
+		<div class="layui-footer footer">
+			<div class="main index_main">
+				<p>老张博客 ©
+					<a class="site_url" href="http://www.phplaozhang.com">phplaozhang.com</a>
+				</p>
+				<p>
+					<a href="/Sitemap.xml">网站地图</a>
+				</p>
+				<p class="beian">
+					<a class="gongan" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41019702002232"><img src="/template/laozhang/static/images/gonganbeian.png" alt="豫公网安备 41019702002232号">豫公网安备 41019702002232号</a>
+					<a class="icp" target="_blank" href="http://www.beian.miit.gov.cn">豫ICP备16031090号-1</a>
+				</p>
+			</div>
+		</div>
+<script type="text/javascript" src="/resources/layui/layui.all.js?v=1" ></script>
+<script type="text/javascript">
+	var form, layer, upload, $;
+	//实例化layui对象
+	form = layui.form;
+	layer = layui.layer;
+	upload = layui.upload;
+	$ = layui.$;
+
+		//左边导航点击显示
+		$('.left_nav_btn').click(function() {
+			$('.left_nav_mask').show();
+			$('.left_nav').addClass('left_nav_show');
+		});
+		//左边导航点击消失
+		$('.left_nav_mask').click(function() {
+			$('.left_nav').removeClass('left_nav_show');
+			$('.left_nav_mask').hide();
+		});
+
+		//搜索框特效
+		$('.header .head_search .search_input').focus(function() {
+			$('.header .head_search').addClass('focus');
+			$(this).attr('placeholder', '输入关键词搜索');
+		});
+		/*$(document).click(function(){
+			$('.header .head_search').removeClass('focus');
+			$('.header .head_search .search_input').attr('placeholder','搜索');
+		});
+		$('.header .head_search').click(function(e){
+			$(this).addClass('focus');
+			e.stopPropagation();
+		});*/
+		$('.header .head_search .close').click(function() {
+			$('.header .head_search').removeClass('focus');
+			$('.header .head_search .search_input').attr('placeholder', '搜索');
+		});
+		//底部会员头像
+		$('#fixbar_avatar').click(function() {
+			if($('#fixbar_avatar .fixbar_member_info').is(":visible")) {
+				$('#fixbar_avatar .fixbar_member_info').hide().css({
+					'opacity': 0,
+					'right': '70px'
+				});
+
+			} else {
+				$('#fixbar_avatar .fixbar_member_info').show().animate({
+					'opacity': 1,
+					'right': '50px'
+				}, 50);
+			}
+		});
+		$('#fixbar_avatar').hover(function() {
+			$('#fixbar_avatar .fixbar_member_info').show().animate({
+				'opacity': 1,
+				'right': '50px'
+			}, 50);
+		}, function() {
+			$('#fixbar_avatar .fixbar_member_info').hide().css({
+				'opacity': 0,
+				'right': '70px'
+			});
+		});
+		//退出登陆
+		$("#fixbar_avatar").on('click', '#logout_btn', function() {
+			loading = layer.load(2, {
+				shade: [0.2, '#000'] //0.2透明度的白色背景
+			});
+			$.post('/index/member/logout.html', function(data) {
+				if(data.code == 200) {
+					layer.close(loading);
+					layer.msg(data.msg, {
+						icon: 1,
+						time: 1000
+					}, function() {
+						$('#fixbar_avatar').hide()
+						//location.reload();//do something
+					});
+				} else {
+					layer.close(loading);
+					layer.msg(data.msg, {
+						icon: 2,
+						anim: 6,
+						time: 1000
+					});
+				}
+			});
+		});
+		//回到顶部
+		$("#to_top").click(function() {
+			$("html,body").animate({
+				scrollTop: 0
+			}, 200);
+		});
+		$(document).scroll(function() {
+			var scroll_top = $(document).scrollTop();
+			if(scroll_top > 500) {
+				$("#to_top").show();
+			} else {
+				$("#to_top").hide();
+			}
+		});
+		//底部版权始终在底部
+		/*var win_height = $(window).height();
+		var body_height = $('body').height();
+		var footer_height = $('.footer').height();
+		if(body_height - win_height < 0){
+			$('.footer').addClass('footer_fixed');
+		} */
+</script>
