@@ -3,11 +3,16 @@ package controllers
 import (
 	//"fmt"
 	"beego/app/constants"
+	"fmt"
 	"github.com/astaxie/beego"
 )
 
 type BaseController struct {
 	beego.Controller
+}
+
+func TypeOf(v interface{}) string {
+	return fmt.Sprintf("%T", v)
 }
 
 func (c *BaseController) Welcome() {

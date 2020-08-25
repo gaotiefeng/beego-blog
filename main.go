@@ -33,7 +33,7 @@ func init()  {
 
 func main(){
 
-	//logs.Async(1e3)
+	orm.Debug = true
 
 	beego.Run()
 }

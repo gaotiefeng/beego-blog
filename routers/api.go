@@ -7,12 +7,12 @@ import (
 
 func init() {
 
-	beego.Router("/user/login",&api.UserController{},"get:Login")
-	beego.Router("/user/register",&api.UserController{},"get:Register")
-	beego.Router("/user/find",&api.UserController{},"get:Find")
-	beego.Router("/user/list",&api.UserController{},"get:List")
-	beego.Router("/user/update",&api.UserController{},"get:Update")
-	beego.Router("/user/delete",&api.UserController{},"get:Delete")
+	beego.Router("/api/user/login",&api.UserController{},"get:Login")
+	beego.Router("/api/user/register",&api.UserController{},"get:Register")
+	beego.Router("/api/user/find",&api.UserController{},"get:Find")
+	beego.Router("/api/user/list",&api.UserController{},"get:List")
+	beego.Router("/api/user/update",&api.UserController{},"get:Update")
+	beego.Router("/api/user/delete",&api.UserController{},"get:Delete")
 
 
 }
