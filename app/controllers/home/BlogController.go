@@ -3,8 +3,6 @@ package home
 import (
 	"beego/app/controllers"
 	"beego/app/service/Dao"
-	"fmt"
-	"github.com/astaxie/beego"
 )
 
 type BlogController struct {
@@ -12,24 +10,24 @@ type BlogController struct {
 }
 
 /**
-
+博客首页
  */
 func (this *BlogController) Index() {
 
-	offset, _ := this.GetInt("offset",0)
-	limit, _ := this.GetInt("limit",10)
+	//offset, _ := this.GetInt("offset",0)
+	//limit, _ := this.GetInt("limit",10)
 
 	treeList :=Dao.GetClass(0)
-	fmt.Print("122121 %d",treeList)
 	this.Data["class"] = treeList
 
-	count,data,err := Dao.ArticleDaoList(offset,limit)
+	/*count,data,err := Dao.ArticleDaoList(offset,limit)
 	if err != nil {
 		beego.Informational("article is empty")
 	}
 
 	this.Data["count"] = count
-	this.Data["data"] = data
+	this.Data["data"] = data*/
+	this.Data["count"] = Dao.ArticleDaoCount()
 	this.TplName = "home/index.html"
 }
 

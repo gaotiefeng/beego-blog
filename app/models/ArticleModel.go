@@ -10,6 +10,7 @@ type Article struct {
 	Name    string	`orm:"column(name)" description:"name" json:"name"`
 	Content	string	`orm:"column(content)" description:"content" json:"content"`
 	Image string `orm:"column(image)" description:"image" json:"image"`
+	Click      int		 `orm:"column(click)" description:"click" json:"click"`
 	CreatedAt	time.Time	`orm:"column(created_at)"  description:"created_at" json:"created_at"`
 }
 
