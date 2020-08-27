@@ -31,90 +31,31 @@
 		</style>
 
 		<!-- 头部 开始 -->
+		<!-- 头部 开始 -->
 		<div class="layui-header header trans_3">
 			<div class="main index_main">
-				<a class="logo" href="/"><img src="/uploads/images/20161229/ee5e446aec809c208dc07a4dfa3dec39.png" alt="js&jquery操作页面中iframe内的dom元素-老张博客-一个PHP程序员的个人博客网站"></a>
+				<a class="logo" href="/">
+					{{/*<img src="/resources/1.png" alt="老张博客-一个PHP程序员的个人博客网站">*/}}
+				</a>
 				<ul class="layui-nav" lay-filter="top_nav">
 					<li class="layui-nav-item home">
 						<a href="/">首页</a>
 					</li>
-					<li class="layui-nav-item">
-						<a href="/article-index/1.html">学无止境</a>
-						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
-							<dd>
-								<a href="/article-lists/8.html">杂谈</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/9.html">PHP</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/10.html">建站</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/11.html">WEB前端</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/15.html">LzCMS</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/16.html">Python</a>
-							</dd>
-							<dd>
-								<a href="/article-lists/17.html">微信小程序</a>
-							</dd>
-						</dl>
-					</li>
-					<li class="layui-nav-item">
-						<a href="/download-index/2.html">分享无价</a>
-						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
-							<dd>
-								<a href="/download-lists/13.html">源码分享</a>
-							</dd>
-							<dd>
-								<a href="/download-lists/14.html">jQuery特效</a>
-							</dd>
-							<dd>
-								<a href="/download-lists/18.html">软件工具</a>
-							</dd>
-						</dl>
-					</li>
-					<li class="layui-nav-item">
-						<a href="/link-lists/3.html">日记</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="/page/5.html">关于</a>
-						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
-							<dd>
-								<a href="/page/5.html">关于老张</a>
-							</dd>
-							<dd>
-								<a href="/page/6.html">关于LzCMS</a>
-							</dd>
-							<dd>
-								<a href="http://www.phplaozhang.com/feedback.html">留言</a>
-							</dd>
-						</dl>
-					</li>
+					{{range .class}}
+						<li class="layui-nav-item">
+							<a href="{{.Link}}">{{.Name}}</a>
+							<dl class="layui-nav-child">
+								<!-- 二级菜单 -->
+								{{range .Children}}
+									<dd>
+										<a href="{{.Link}}">{{.Name}}</a>
+									</dd>
+								{{end}}
+							</dl>
+						</li>
+					{{end}}
 				</ul>
-				<div class="title">老张博客</div>
-				<form action="/search.html" mothod="post" class="head_search trans_3 layui-form">
-					<div class="layui-form-item trans_3">
-						<span class="close trans_3"><i class="layui-icon">&#x1006;</i> </span>
-						<div class="layui-input-inline trans_3">
-							<select name="model_id">
-								<option value="2" selected>文章模型</option>
-								<option value="3">图集模型</option>
-								<option value="5">下载模型</option>
-							</select>
-						</div>
-						<input type="text" name="keywords" placeholder="搜索" autocomplete="off" class="search_input trans_3">
-						<button class="layui-btn" lay-submit="" style="display: none;"></button>
-					</div>
 
-				</form>
 			</div>
 		</div>
 		<div class="header_back"></div>
@@ -176,9 +117,6 @@
 						<dl class="layui-nav-child">
 							<!-- 二级菜单 -->
 							<dd>
-								<a href="/page/5.html">关于老张</a>
-							</dd>
-							<dd>
 								<a href="/page/6.html">关于LzCMS</a>
 							</dd>
 							<dd>
@@ -195,7 +133,7 @@
 		<!-- 面包屑导航 开始 -->
 		<div class="main breadcrumb_nav trans_3">
 			<span class="layui-breadcrumb" lay-separator="—">
-	  <a href="/">首页</a>
+	  			<a href="/">首页</a>
 				<a href="/article-index/1.html">学无止境</a>
 				<a href="/article-lists/11.html">WEB前端</a>
 				<a><cite>{{.data.Name}}</cite></a>
@@ -208,7 +146,7 @@
 				<div class="detail_container trans_3">
 					<h1>{{.data.Name}}</h1>
 					<div class="date_hits"><span><i>发布时间：</i>{{.data.CreatedAt}}</span><span>
-							<i>热度：</i> 2335 ℃</span><span><i>评论数：</i>
+							<i>热度：</i>{{.data.Click}}</span><span><i>评论数：{{.data.Click}}</i>
 							<a href="#SOHUCS" id="changyan_count_unit"></a>
 						</span></div>
 					<div class="content">
@@ -222,11 +160,11 @@
 						<p><br/></p>
 					</div>
 					<div class="keywords">
-						<p>error</p>
+						<p>{{.data.Name}}</p>
 					</div>
 					<div class="prev_next">
 						<div class="prev">上一篇：
-							<a href="/article-lists/11.html">返回列表</a>
+							<a href="/">返回列表</a>
 						</div>
 						<div class="next">下一篇：
 							<a href="/article/93.html">js&jq ,json字符串转换json对象 ,json对象转换json字符串</a>
@@ -253,15 +191,6 @@
 							<a href="/article-lists/9.html" class="layui-btn layui-btn-primary trans_1">PHP</a>
 						</li>
 						<li>
-							<a href="/article-lists/10.html" class="layui-btn layui-btn-primary trans_1">建站</a>
-						</li>
-						<li class="selected">
-							<a href="/article-lists/11.html" class="layui-btn layui-btn-primary trans_1">WEB前端</a>
-						</li>
-						<li>
-							<a href="/article-lists/15.html" class="layui-btn layui-btn-primary trans_1">LzCMS</a>
-						</li>
-						<li>
 							<a href="/article-lists/16.html" class="layui-btn layui-btn-primary trans_1">Python</a>
 						</li>
 						<li>
@@ -277,22 +206,7 @@
 							<a href="/article/6.html">阻止a标签href默认跳转事件</a><span class="hits"> 4854 ℃ </span></li>
 						<li>
 							<a href="/article/53.html">CSS控制文字，超出部分显示省略号，多行文本超出显示省略号</a><span class="hits"> 4623 ℃ </span></li>
-						<li>
-							<a href="/article/89.html">HTML5事件—visibilitychange 页面可见性改变事件</a><span class="hits"> 4261 ℃ </span></li>
-						<li>
-							<a href="/article/48.html">曾经用过的十大富文本编辑器</a><span class="hits"> 3753 ℃ </span></li>
-						<li>
-							<a href="/article/93.html">js&jq ,json字符串转换json对象 ,json对象转换json字符串</a><span class="hits"> 3713 ℃ </span></li>
-						<li>
-							<a href="/article/90.html">通过CSS实现 文字渐变色 的两种方式</a><span class="hits"> 3710 ℃ </span></li>
-						<li>
-							<a href="/article/22.html">JS判断当前浏览器内核以及版本</a><span class="hits"> 3572 ℃ </span></li>
-						<li>
-							<a href="/article/80.html">防止自己的页面不被其他网站的页面的iframe引用</a><span class="hits"> 3451 ℃ </span></li>
-						<li>
-							<a href="/article/28.html">OwlCarousel2支持触摸屏的响应式轮播图，jQuery轮播图插件</a><span class="hits"> 3025 ℃ </span></li>
-						<li>
-							<a href="/article/96.html">js&jquery操作页面中iframe内的dom元素</a><span class="hits"> 2335 ℃ </span></li>
+
 					</ol>
 				</div>
 				<div class="mobile_qrcode_container">

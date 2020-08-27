@@ -28,6 +28,8 @@ func (this *ArticleController) List()  {
  */
 func (this *ArticleController) Detail()  {
 
+	treeList :=Dao.GetClass(0)
+	this.Data["class"] = treeList
 	id,_ := this.GetInt("id",0)
 
 	if id == 0 {
