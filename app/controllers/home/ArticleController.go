@@ -22,3 +22,24 @@ func (this *ArticleController) List()  {
 
 	this.ResponseSuccess("文章列表",map[string]interface{}{"count":count,"items":data})
 }
+
+/**
+
+ */
+func (this *ArticleController) Detail()  {
+
+	id,_ := this.GetInt("id",0)
+
+	if id == 0 {
+		this.TplName = "404.tpl"
+		return
+	}
+
+	article,error := Dao.ArticleDaoFind(id)
+	if error != nil {
+		this.TplName = "500.tpl"
+		return
+	}
+	this.Data["data"] = article
+	this.TplName = "home/detail.html"
+}

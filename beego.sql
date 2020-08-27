@@ -25,6 +25,7 @@ CREATE TABLE `article` (
   `name` varchar(64) NOT NULL COMMENT '文章标题',
   `class_id` int(10) NOT NULL DEFAULT '1' COMMENT '分类id',
   `content` text,
+  `click` int(10) DEFAULT '10' COMMENT '点击量',
   `image` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

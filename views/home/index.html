@@ -434,19 +434,17 @@ $('.footer').addClass('footer_fixed');
 		var nums = 0; //每页出现的数据量
 		var limit = 6;
 		var count = {{.count}};
-		var page = 0;
 		//模拟渲染
 		var render = function(data, curr){
-			page = curr
 			var arr = []
 			//thisData = data.concat().splice(curr*nums-nums, nums);
 			thisData = data.concat();
 			layui.each(thisData, function(index, item){
 				arr.push('<li class="no_pic"><h2 class="title">' +
-						'<a href="/blog/detail?id='+item.id+'">'+item.name+'</a></h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
-						'<a href="/blog/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
+						'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
+						'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
 						item.click+'</span><p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i><span id="sourceId::1196" class="cy_cmt_count"></span>'+
-						'</p></div><div class="desc">'+item.content+'</div></li>');
+						'</p></div><div class="desc"><a href="/article/detail?id='+item.id+'">'+item.content+'</a></div></li>');
 				//arr.push('<li>'+ item.name +'</li>');
 			});
 			return arr.join('');
@@ -464,7 +462,7 @@ $('.footer').addClass('footer_fixed');
 					url:'article/list'
 					,type:"POST"
 					,dataType: "json"
-					,data:{offset:page,limit: limit}
+					,data:{offset:obj.curr,limit: limit}
 					,success: function (r_data) {
 						count = r_data.data.count
 						data = r_data.data.items
