@@ -23,11 +23,11 @@ func ArticleDaoList(offset int,limit int) (int64,*[]models.Article,error) {
 	return count,articleModel,err
 }
 
-func ArticleDaoCount() (int64) {
+func ArticleDaoCount() (count int64) {
 
 	article := new(models.Article)
 	o := orm.NewOrm()
-	count,_ := o.QueryTable(article).Count()
+	count,_ = o.QueryTable(article).Count()
 
 	return count
 }

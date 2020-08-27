@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-08-27 13:23:04
+Date: 2020-08-27 17:09:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,8 @@ CREATE TABLE `article` (
   `click` int(10) DEFAULT '10' COMMENT '点击量',
   `image` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`,`class_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COMMENT='文章表';
 
 -- ----------------------------
@@ -51,6 +52,7 @@ CREATE TABLE `class` (
   `class_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `class_name` varchar(64) NOT NULL DEFAULT '' COMMENT '分类名称',
   `link` varchar(255) NOT NULL DEFAULT 'http://blog.tfuu.cn' COMMENT '链接',
+  `class_path` varchar(64) DEFAULT NULL COMMENT '父级id',
   `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
   `pid` int(10) NOT NULL DEFAULT '0' COMMENT '0一级分类',
   `created_at` datetime DEFAULT NULL,
@@ -61,16 +63,33 @@ CREATE TABLE `class` (
 -- ----------------------------
 -- Records of class
 -- ----------------------------
-INSERT INTO `class` VALUES ('1', 'Linux', 'http://blog.tfuu.cn', '0', '0', null);
-INSERT INTO `class` VALUES ('2', 'WEB', 'http://blog.tfuu.cn', '0', '0', null);
-INSERT INTO `class` VALUES ('3', '前端', 'http://blog.tfuu.cn', '0', '1', null);
-INSERT INTO `class` VALUES ('4', 'GO', 'http://blog.tfuu.cn', '0', '2', null);
-INSERT INTO `class` VALUES ('5', 'PHP', 'http://blog.tfuu.cn', '0', '2', null);
-INSERT INTO `class` VALUES ('6', '工具', 'http://blog.tfuu.cn', '0', '0', null);
-INSERT INTO `class` VALUES ('7', '关于', 'http://blog.tfuu.cn', '0', '0', null);
-INSERT INTO `class` VALUES ('8', '二维码生成', 'http://blog.tfuu.cn', '0', '6', null);
-INSERT INTO `class` VALUES ('9', '时间戳转换', 'http://blog.tfuu.cn', '0', '6', null);
-INSERT INTO `class` VALUES ('10', '关于我们', 'http://blog.tfuu.cn', '0', '7', null);
+INSERT INTO `class` VALUES ('1', 'Linux', 'http://blog.tfuu.cn', null, '0', '0', null);
+INSERT INTO `class` VALUES ('2', 'WEB', 'http://blog.tfuu.cn', null, '0', '0', null);
+INSERT INTO `class` VALUES ('3', '前端', 'http://blog.tfuu.cn', null, '0', '1', null);
+INSERT INTO `class` VALUES ('4', 'GO', 'http://blog.tfuu.cn', null, '0', '2', null);
+INSERT INTO `class` VALUES ('5', 'PHP', 'http://blog.tfuu.cn', null, '0', '2', null);
+INSERT INTO `class` VALUES ('6', '工具', 'http://blog.tfuu.cn', null, '0', '0', null);
+INSERT INTO `class` VALUES ('7', '关于', 'http://blog.tfuu.cn', null, '0', '0', null);
+INSERT INTO `class` VALUES ('8', '二维码生成', 'http://blog.tfuu.cn', null, '0', '6', null);
+INSERT INTO `class` VALUES ('9', '时间戳转换', 'http://blog.tfuu.cn', null, '0', '6', null);
+INSERT INTO `class` VALUES ('10', '关于我们', 'http://blog.tfuu.cn', null, '0', '7', null);
+
+-- ----------------------------
+-- Table structure for config
+-- ----------------------------
+DROP TABLE IF EXISTS `config`;
+CREATE TABLE `config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `config_key` varchar(255) NOT NULL DEFAULT '' COMMENT '配置key',
+  `config_value` varchar(255) NOT NULL DEFAULT '' COMMENT '配置值',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='配置表';
+
+-- ----------------------------
+-- Records of config
+-- ----------------------------
+INSERT INTO `config` VALUES ('1', 'host', 'http://www.tfuu.cn');
+INSERT INTO `config` VALUES ('2', 'home_banner', 'https://images.tfuu.cn/banner.jpg');
 
 -- ----------------------------
 -- Table structure for user
