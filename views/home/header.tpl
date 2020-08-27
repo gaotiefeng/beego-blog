@@ -52,3 +52,32 @@
 
 			</div>
 		</div>
+
+        {{/*<div class="header_back"></div>*/}}
+        <!-- 头部 结束 -->
+        <!-- 左边导航 开始 -->
+        <div class="layui-side layui-bg-black left_nav trans_2">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree" lay-filter="left_nav">
+                    <li class="layui-nav-item home">
+                        <a href="/">首页</a>
+                    </li>
+                    {{range .class}}
+                    <li class="layui-nav-item">
+                        <a href="javascript:void();">{{.Name}}</a>
+                        <dl class="layui-nav-child">
+                            <!-- 二级菜单 -->
+                            {{range .Children}}
+                                <dd>
+                                    <a href="{{.Link}}">{{.Name}}</a>
+                                </dd>
+                            {{end}}
+                        </dl>
+                    </li>
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+        <div class="left_nav_mask"></div>
+        <div class="left_nav_btn"><i class="layui-icon">&#xe602;</i></div>
+        <!-- 左边导航 结束 -->
