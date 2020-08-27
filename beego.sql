@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-08-27 17:09:49
+Date: 2020-08-27 20:02:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,13 +83,14 @@ CREATE TABLE `config` (
   `config_key` varchar(255) NOT NULL DEFAULT '' COMMENT '配置key',
   `config_value` varchar(255) NOT NULL DEFAULT '' COMMENT '配置值',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='配置表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='配置表';
 
 -- ----------------------------
 -- Records of config
 -- ----------------------------
 INSERT INTO `config` VALUES ('1', 'host', 'http://www.tfuu.cn');
-INSERT INTO `config` VALUES ('2', 'home_banner', 'https://images.tfuu.cn/banner.jpg');
+INSERT INTO `config` VALUES ('2', 'home_banner', 'https://images.tfuu.cn/home_banner.jpg');
+INSERT INTO `config` VALUES ('3', 'banner', 'https://images.tfuu.cn/banner.jpg');
 
 -- ----------------------------
 -- Table structure for user
