@@ -15,8 +15,10 @@ type BlogController struct {
  */
 func (this *BlogController) Index() {
 
-	banner := service.GetByConfigKey("home_banner")
-	this.Data["home_banner"] = banner
+	homeBanner := service.GetByConfigKey("home_banner")
+	this.Data["home_banner"] = homeBanner
+	banner := service.GetByConfigKey("banner")
+	this.Data["banner"] = banner
 
 	treeList :=Dao.GetClass(0)
 	this.Data["class"] = treeList
