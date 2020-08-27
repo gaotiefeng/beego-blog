@@ -27,9 +27,6 @@ func (this *ArticleController) List()  {
 
  */
 func (this *ArticleController) Detail()  {
-
-	treeList :=Dao.GetClass(0)
-	this.Data["class"] = treeList
 	id,_ := this.GetInt("id",0)
 
 	if id == 0 {
@@ -43,5 +40,9 @@ func (this *ArticleController) Detail()  {
 		return
 	}
 	this.Data["data"] = article
-	this.TplName = "home/detail.html"
+
+	treeList :=Dao.GetClass(0)
+	this.Data["class"] = treeList
+
+	this.TplName = "home/article/detail.html"
 }

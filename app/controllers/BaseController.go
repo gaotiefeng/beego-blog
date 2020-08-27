@@ -11,9 +11,6 @@ type BaseController struct {
 	beego.Controller
 }
 
-func TypeOf(v interface{}) string {
-	return fmt.Sprintf("%T", v)
-}
 
 func (c *BaseController) Welcome() {
 
@@ -40,6 +37,10 @@ func Error(code int,message string, data interface{}) (json interface{}) {
 
 	json = map[string]interface{}{"code":code,"msg":message,"data":data}
 	return json
+}
+
+func TypeOf(v interface{}) string {
+	return fmt.Sprintf("%T", v)
 }
 
 func (this *BaseController) ResponseError (code int,message string, data interface{}) () {

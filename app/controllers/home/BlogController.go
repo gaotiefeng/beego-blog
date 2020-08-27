@@ -16,9 +16,9 @@ func (this *BlogController) Index() {
 
 	treeList :=Dao.GetClass(0)
 	this.Data["class"] = treeList
-
 	this.Data["count"] = Dao.ArticleDaoCount()
-	this.TplName = "home/index.html"
+
+	this.TplName = "home/article/index.html"
 }
 
 
