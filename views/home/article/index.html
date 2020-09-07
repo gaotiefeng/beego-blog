@@ -274,12 +274,21 @@ $('.footer').addClass('footer_fixed');
 			//thisData = data.concat().splice(curr*nums-nums, nums);
 			thisData = data.concat();
 			layui.each(thisData, function(index, item){
-				arr.push('<li class="no_pic">' +
-						'<a href="/article/detail?id='+item.id+'"></a><h2>'+item.name+'</h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
-						'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
-						item.click+'</span><p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i><span id="sourceId::1196" class="cy_cmt_count"></span>'+
-						'</p></div><div class="desc"><a href="/article/detail?id='+item.id+'">'+item.content+'</a></div></li>');
-				//arr.push('<li>'+ item.name +'</li>');
+				if(item.image == "") {
+					arr.push('<li class="no_pic">' +
+							'<a href="/article/detail?id='+item.id+'"></a><h2>'+item.name+'</h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
+							'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
+							item.click+'</span><p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i><span id="sourceId::1196" class="cy_cmt_count"></span>'+
+							'</p></div><div class="desc"><a href="/article/detail?id='+item.id+'">'+item.content+'</a></div></li>');
+				}else {
+					arr.push('<li class=""><a href="/article/detail?id='+item.id+'" class="pic">' +
+							'<img class="lazy"  src="'+item.image+'" alt="'+item.name+'" style="display: inline-block;"></a>' +
+							'<h2 class="title"><a href="/article/detail?id='+item.id+'">'+item.name+'</a></h2><div class="date_hits"><span>3年前</span><span>' +
+							'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="'+item.click+'"></i>'+item.click+'</span>' +
+							'<p class="commonts"><i class="layui-icon" title="点击量"></i> ' +
+							'<span id="sourceId::1190" class="cy_cmt_count">5</span></p></div><div class="desc">'+item.content+'</div></li>');
+				}
+
 			});
 			return arr.join('');
 		};

@@ -15,9 +15,13 @@ func (this *LoginController) Index()  {
 }
 
 func (this *LoginController) Login()  {
+	userName := this.Input().Get("user_name")
+	password := this.GetString("password")
 	var count int64
-	var json interface{}
-	this.ResponseSuccess("登录成功",json,count)
+	var json = make(map[string]interface{})
+	json["userName"] = userName
+	json["password"] = password
+	this.ResponseSuccess(constants.SUCCESS,"登录成功",json,count)
 }
 
 func (this *LoginController) ResponseError (code int,message string, data interface{}) () {
@@ -28,10 +32,10 @@ func (this *LoginController) ResponseError (code int,message string, data interf
 	this.ServeJSON()
 }
 
-func (this *LoginController) ResponseSuccess (message string, data interface{},count int64) () {
+func (this *LoginController) ResponseSuccess (code int,message string, data interface{},count int64) () {
 
 	var json interface{}
-	json = map[string]interface{}{"code":constants.SUCCESS,"msg":message,"count":count,"data":data}
+	json = map[string]interface{}{"code":code,"msg":message,"count":count,"data":data}
 	this.Data["json"] = json
 	this.ServeJSON()
 }

@@ -26,6 +26,12 @@ func (c *BaseController) Notfound() {
 	c.TplName = "404.tpl"
 }
 
+
+func (c *BaseController) Defend() {
+
+	c.TplName = "505.tpl"
+}
+
 func Success(code int,message string,data interface{}) (json interface{}){
 
 	json = map[string]interface{}{"code":code,"msg":message,"data":data}
