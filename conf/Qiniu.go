@@ -1,0 +1,5 @@
+package conf
+
+const AccessKey string  = "23323232"
+const SecretKey = "322332"
+const Bucket =  "tfuu"

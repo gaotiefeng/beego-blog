@@ -21,7 +21,7 @@ func (this *LoginController) Login()  {
 	var json = make(map[string]interface{})
 	json["userName"] = userName
 	json["password"] = password
-	this.ResponseSuccess(constants.SUCCESS,"登录成功",json,count)
+	this.ResponseListSuccess(constants.SUCCESS,"登录成功",json,count)
 }
 
 func (this *LoginController) ResponseError (code int,message string, data interface{}) () {
@@ -32,7 +32,15 @@ func (this *LoginController) ResponseError (code int,message string, data interf
 	this.ServeJSON()
 }
 
-func (this *LoginController) ResponseSuccess (code int,message string, data interface{},count int64) () {
+func (this *LoginController) ResponseSuccess (code int,message string, data interface{}) () {
+
+	var json interface{}
+	json = map[string]interface{}{"code":code,"msg":message,"data":data}
+	this.Data["json"] = json
+	this.ServeJSON()
+}
+//前端需要结构
+func (this *LoginController) ResponseListSuccess (code int,message string, data interface{},count int64) () {
 
 	var json interface{}
 	json = map[string]interface{}{"code":code,"msg":message,"count":count,"data":data}

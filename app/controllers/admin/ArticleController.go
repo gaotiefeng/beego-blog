@@ -22,7 +22,7 @@ func (this *ArticleController) List()  {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)
 	}
 
-	this.ResponseSuccess(constants.SUCCESS,"查询成功",list,count)
+	this.ResponseListSuccess(constants.SUCCESS,"查询成功",list,count)
 }
 
 func (this *ArticleController) Add(){

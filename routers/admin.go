@@ -14,5 +14,7 @@ func init() {
 	//文章
 	beego.Router("/admin/article/list",&admin.ArticleController{},"get:List")
 	beego.Router("/admin/article/add",&admin.ArticleController{},"get:Add")
+	//七牛
+	beego.Router("/admin/upload/get-token",&admin.UploadController{},"get:QiniuToken")
 
 }
