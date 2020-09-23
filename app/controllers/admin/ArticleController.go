@@ -24,3 +24,9 @@ func (this *ArticleController) List()  {
 
 	this.ResponseSuccess(constants.SUCCESS,"查询成功",list,count)
 }
+
+func (this *ArticleController) Add(){
+
+	this.Layout = "admin/layout.html"
+	this.TplName = "admin/article/add.html"
+}

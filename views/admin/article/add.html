@@ -1,0 +1,156 @@
+<form class="layui-form" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章名称</label>
+        <div class="layui-input-block">
+            <input type="text" value="" name="name" required  lay-verify="required" placeholder="请输入文章名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">文章分类</label>
+        <div class="layui-input-block">
+            <select name="class_id" lay-verify="required">
+
+                <option value="" selected>请选择</option>
+                <option value="1" selected>请选择1</option>
+
+            </select>
+        </div>
+    </div>
+
+
+    <input type="hidden" name="id" value="" >
+
+    <input type="hidden" name="image" value="" class="image">
+    <div class="layui-form-item">
+        <label class="layui-form-label ">封面图片:</label>
+        <div class="layui-upload">
+            <button type="button" class="layui-btn layui-btn-warm" id="test1">上传图片</button>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="demo1" src="">
+                <p id="demoText"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文章内容</label>
+        <div class="layui-input-block">
+            <!-- 加载编辑器的容器 -->
+            <script id="container" name="content" type="text/plain"></script>
+
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<!-- 配置文件 -->
+<script type="text/javascript" src="/resources/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/resources/ueditor/editor_api.js"></script>
+<script src="/resources/layui/layui.all.js"></script>
+<script src="/resources/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        var ue = UE.getEditor('container',{
+            elementPathEnabled:false,
+            //默认的编辑区域高度
+            initialFrameHeight:300
+        });
+    //对编辑器的操作最好在编辑器ready之后再做
+        ue.ready(function(){
+            //设置编辑器的内容
+            //获取html内容，返回: <p>hello</p>
+            var html = ue.getContent();
+            //获取纯文本内容，返回: hello
+            var txt = ue.getContentTxt();
+        });
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            console.log(JSON.stringify(data.field));
+            data.field.des =  ue.getContent();
+            $.ajax({
+                url: "/haobo/Site/Product/add_data",
+                type: 'POST',
+                data: data.field,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 200) {
+                        layer.open({
+                            type: 0,
+                            area: ['300px', '180px'],
+                            title: '恭喜您，操作成功！',
+                            content: '您已成功添加新的产品！',
+                            btn: ['继续添加', '完成'],
+                            yes: function(index, layero) {
+                                window.location.href = "/haobo/Site/Product/add"
+                            },
+                            btn2: function(index, layero) {
+                                window.location.href = "/haobo/Site/Product/index"
+                            }
+                        });
+                    }else {
+                        layer.msg('添加失败',{icon: 5},{
+                            time: 2000
+                        }, function() {});
+                    }
+                },
+                error:function(data){
+                    layer.msg('添加失败',{icon: 5},{
+                        time: 2000
+                    }, function() {});
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            ,url: '/haobo/site/upload/file_image'
+            ,accept:'images'
+            ,size:50000
+            ,before: function(obj){
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result);
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code != 200){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+
+                var fileupload = $(".image");
+                fileupload.attr("value",res.data);
+                console.log(fileupload.attr("value"));
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+</script>
