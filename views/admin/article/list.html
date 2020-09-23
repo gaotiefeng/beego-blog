@@ -7,12 +7,16 @@
 </head>
 <body>
 
+<button class="layui-btn layui-btn-normal">
+    <a style="color:white;" href="/admin/article/add">添加文章</a>
+</button>
 <table id="article" lay-filter="test"></table>
+<button class="layui-btn layui-btn-danger" id="demo_export">导出</button>
+<button class="layui-btn" id="demo_all_export">全部导出</button>
 
 <script src="/resources/layui/layui.js"></script>
 <script src="/resources/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
 $(function () {
     layui.use('table', function(){
         var table = layui.table;
@@ -22,6 +26,7 @@ $(function () {
             elem: '#article'
             ,height: 600
             ,url: '/admin/article/list/' //数据接口
+            ,title:'文章列表'
             ,page: true
             ,cols: [[ //表头
                 {field: 'id', title: 'ID', width:180, sort: true, fixed: 'left'}
@@ -29,6 +34,7 @@ $(function () {
                 ,{field: 'content', title: '文章内容', width:80}
                 ,{field: 'image', title: '封面图片', width: 177}
                 ,{field: 'created_at', title: '发布时间', width: 180, sort: true}
+                ,{field: '', title: '操作', toolbar:"#bar"}
             ]]
             ,response: {
                 statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
@@ -36,6 +42,7 @@ $(function () {
             ,limit:limit
             ,limits: [10, 20, 30]
             ,done: function (res, curr, count) { //curr当前页码、count为数据总条数
+                ex_data = res.data
                 console.log(res);
             }
             ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
@@ -47,7 +54,69 @@ $(function () {
                 };
             }
         });
+        //导出按钮
+        $("#demo_export").click(function () {
+            console.log(ex_data)
+            table.exportFile('demo_ex', ex_data, 'xls');
+        });
+        //全部导出
+        $("#demo_all_export").click(function () {
+            //使用ajax请求获取所有数据
+            $.ajax({
+                url: "/admin/article/data_all",
+                type: 'post',
+                data: {
+                    type: 1
+                },
+                async: false,
+                dataType: 'json',
+                success: function (res) {
+                    //使用table.exportFile()导出数据
+                    table.exportFile('demo_ex', res.data, 'xls');
+                }
+            });
+        });
+        table.on('tool(test)',function (obj) {
+            layev = obj.event;
+            id = obj.data.id;
+            if (layev == 'del') {
+                layui.use('layer',function(){
+                    var layer = layui.layer;
+                    layer.msg('你确定删除么？', {
+                        time: 60000 ,//2秒自动关闭
+                        btn: ['确定', '取消'],
+                        yes: function(index){
+                            console.log(id);
+                            $.ajax({
+                                url:"/haobo/Site/Banner/del",
+                                data:{'id':id},
+                                type:"Post",
+                                dataType:"json",
+                                success:function(data){
+                                    //console.log(data);
+                                    if (data.code == 200) {
+                                        obj.del();
+                                        layer.msg(data.msg,{icon: 6});
+                                    }else {
+                                        layer.msg('删除失败',{icon: 5});
+                                    }
+                                },
+                                error:function(data){
+                                    layer.msg('删除失败',{icon: 5});
+                                }
+                            });
+                            layer.close(index);
+                        }
+                    });
+                });
+            }else if (layev == 'edit') {
+                window.location.href = "/admin/article/add?id="+id
+            }
+        })
     });
 })
-
+</script>
+<script type="text/html" id="bar">
+    <button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="edit">编辑</button>
+    <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="del">删除</button>
 </script>

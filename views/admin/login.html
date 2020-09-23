@@ -18,49 +18,33 @@
         display: block;
         z-index: 2000;
         background: #fff;
-        padding: 20 0;
+        padding: 20px 0;
     }
 </style>
 </head>
-<body >
+<body style="background-image: url('https://images.tfuu.cn/blogback-login.jpg');">
 <div class="window" >
-
     <form  class="layui-form">
         <div class="layui-form-item" style="margin-right: 100px;margin-top: 40px;">
-
             <label class="layui-form-label">用户名：</label>
-
             <div class="layui-input-block">
-
                 <input type="text" name="user_name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-
             </div>
-
         </div>
-
         <div class="layui-form-item" >
-
             <label class="layui-form-label">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-
             <div class="layui-input-inline">
-
                 <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-
             </div>
-
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
             <input  type="checkbox" name="time" title="保持登录7天" lay-skin="primary">
         </div>
-
         <div class="layui-form-item">
             <div style="text-align: center;">
-
                 <button class="layui-btn" lay-submit lay-filter="formDemo">登&nbsp;&nbsp;&nbsp;录</button>
-
             </div>
         </div>
     </form>
@@ -72,7 +56,6 @@
 <script>
     layui.use(['form'], function(){
         var form = layui.form;
-
         //监听提交
         form.on('submit(formDemo)', function(data){
             //layer.msg(JSON.stringify(data.field));
