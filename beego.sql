@@ -109,3 +109,15 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', '4554', null, null, null);
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+CREATE TABLE `admin` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `image` varchar(64) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
