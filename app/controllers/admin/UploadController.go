@@ -8,7 +8,7 @@ import (
 type UploadController struct {
 	LoginController
 }
-
+//获得七牛token
 func (this *UploadController) QiniuToken(){
 	token := Qiniu.GetToken()
 	data := map[string]interface{}{}

@@ -9,7 +9,7 @@ type ArticleController struct {
 	LoginController
 }
 
-
+//文章列表
 func (this *ArticleController) List()  {
 
 	page, _ := this.GetInt("page",0)
@@ -24,7 +24,7 @@ func (this *ArticleController) List()  {
 
 	this.ResponseListSuccess(constants.SUCCESS,"查询成功",list,count)
 }
-
+//添加文章
 func (this *ArticleController) Add(){
 
 	this.Layout = "admin/layout.html"

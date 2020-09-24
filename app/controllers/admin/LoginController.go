@@ -9,11 +9,11 @@ type LoginController struct {
 	beego.Controller
 }
 
-
+//登录页面
 func (this *LoginController) Index()  {
 	this.TplName = "admin/login.html"
 }
-
+//登录
 func (this *LoginController) Login()  {
 	userName := this.Input().Get("user_name")
 	password := this.GetString("password")
