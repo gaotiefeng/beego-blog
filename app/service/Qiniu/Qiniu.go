@@ -1,7 +1,13 @@
 package Qiniu
 
+import (
+	"beego/conf"
+	"github.com/qiniu/api.v7/v7/auth/qbox"
+	"github.com/qiniu/api.v7/v7/storage"
+)
+
 func GetToken() (token string){
-	/*bucket := conf.Bucket
+	bucket := conf.Bucket
 	putPoliy := storage.PutPolicy{
 		Scope: bucket,
 	}
@@ -9,6 +15,5 @@ func GetToken() (token string){
 	secretKey := conf.SecretKey
 	mac := qbox.NewMac(accessKey,secretKey)
 	upToken := putPoliy.UploadToken(mac)
-	return upToken*/
-	return "122121"
+	return upToken
 }
