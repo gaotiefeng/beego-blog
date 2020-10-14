@@ -21,14 +21,16 @@
 
     <input type="hidden" name="id" value="" >
 
-    <input type="hidden" name="image" value="" class="image">
+    <input type="hidden" name="image" value="" id="image">
     <div class="layui-form-item">
         <label class="layui-form-label ">封面图片:</label>
         <div class="layui-upload">
             <button type="button" class="layui-btn layui-btn-warm" id="test1">上传图片</button>
+
             <div class="layui-upload-list">
+                <label class="layui-form-label ">
                 <img class="layui-upload-img" id="demo1" src="">
-                <p id="demoText"></p>
+                <p id="demoText"></p></label>
             </div>
         </div>
     </div>
@@ -53,7 +55,7 @@
 <script type="text/javascript" src="/resources/ueditor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
 <script type="text/javascript" src="/resources/ueditor/editor_api.js"></script>
-<script src="/resources/layui/layui.all.js"></script>
+<script src="/resources/layui/layui.js"></script>
 <script src="/resources/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 <script>
     //Demo
@@ -78,13 +80,13 @@
             console.log(JSON.stringify(data.field));
             data.field.des =  ue.getContent();
             $.ajax({
-                url: "/haobo/Site/Product/add_data",
+                url: "/admin/article/save",
                 type: 'POST',
                 data: data.field,
                 async: false,
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
+                    console.log(data);return;
                     if (data.code == 200) {
                         layer.open({
                             type: 0,
@@ -93,10 +95,10 @@
                             content: '您已成功添加新的产品！',
                             btn: ['继续添加', '完成'],
                             yes: function(index, layero) {
-                                window.location.href = "/haobo/Site/Product/add"
+                                window.location.href = "/admin/article/add"
                             },
                             btn2: function(index, layero) {
-                                window.location.href = "/haobo/Site/Product/index"
+                                window.location.href = "/admin/article/index"
                             }
                         });
                     }else {
@@ -122,7 +124,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: '/haobo/site/upload/file_image'
+            ,url: '/admin/upload/image'
             ,accept:'images'
             ,size:50000
             ,before: function(obj){
@@ -139,9 +141,9 @@
                 var demoText = $('#demoText');
                 demoText.html('<span style="color: #4cae4c;">上传成功</span>');
 
-                var fileupload = $(".image");
-                fileupload.attr("value",res.data);
-                console.log(fileupload.attr("value"));
+                var fileupload = $("#image").val(res.src);
+                /*fileupload.attr("value",res.data);
+                console.log(fileupload.attr("value"));*/
             }
             ,error: function(){
                 //演示失败状态，并实现重传

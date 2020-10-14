@@ -21,6 +21,7 @@ func (this *LoginController) Login()  {
 	var json = make(map[string]interface{})
 	json["userName"] = userName
 	json["password"] = password
+
 	this.ResponseListSuccess(constants.SUCCESS,"登录成功",json,count)
 }
 
@@ -45,5 +46,11 @@ func (this *LoginController) ResponseListSuccess (code int,message string, data 
 	var json interface{}
 	json = map[string]interface{}{"code":code,"msg":message,"count":count,"data":data}
 	this.Data["json"] = json
+	this.ServeJSON()
+}
+//
+func (this *LoginController) Success (data interface{}) () {
+
+	this.Data["json"] = data
 	this.ServeJSON()
 }

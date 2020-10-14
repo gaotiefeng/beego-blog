@@ -1,7 +1,7 @@
 package home
 
 import (
-	"beego/client"
+	"beego/tool/http"
 	"github.com/astaxie/beego"
 )
 
@@ -10,7 +10,7 @@ type LoginController struct {
 }
 
 func (this *LoginController) Index()  {
-	client.Post()
+	http.Post()
 	this.ServeJSON()
 }
 

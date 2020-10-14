@@ -10,7 +10,3 @@ func (this *IndexController) Index()  {
 	this.TplName = "admin/index.html"
 }
 
-func (this *IndexController) Test()  {
-	this.Layout = "admin/layout.html"
-	this.TplName = "admin/article/list.html"
-}
