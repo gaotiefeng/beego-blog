@@ -58,3 +58,12 @@ func ArticleDaoDelete(id int) (num int64, err error) {
 
 	return num, err
 }
+//文章列表
+func ArticleDaoDataAll() (int64,*[]models.Article,error) {
+	article := new(models.Article)
+	o := orm.NewOrm()
+	articleModel := new([]models.Article)
+	count,err := o.QueryTable(article).All(articleModel)
+
+	return count,articleModel,err
+}

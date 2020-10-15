@@ -15,6 +15,7 @@ $(function () {
         //第一个实例
         table.render({
             elem: '#article'
+            ,id:'article_ex'
             ,height: 600
             ,url: '/admin/article/list/' //数据接口
             ,title:'文章列表'
@@ -48,13 +49,13 @@ $(function () {
         //导出按钮
         $("#demo_export").click(function () {
             console.log(ex_data)
-            table.exportFile('demo_ex', ex_data, 'xls');
+            table.exportFile('article_ex', ex_data, 'xls');
         });
         //全部导出
         $("#demo_all_export").click(function () {
             //使用ajax请求获取所有数据
             $.ajax({
-                url: "/admin/article/data_all",
+                url: "/admin/article/data-all",
                 type: 'post',
                 data: {
                     type: 1
@@ -63,7 +64,7 @@ $(function () {
                 dataType: 'json',
                 success: function (res) {
                     //使用table.exportFile()导出数据
-                    table.exportFile('demo_ex', res.data, 'xls');
+                    table.exportFile('article_ex', res.data, 'xls');
                 }
             });
         });

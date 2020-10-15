@@ -16,10 +16,12 @@ func init() {
 	beego.Router("/admin/article/list",&admin.ArticleController{},"get:List")
 	beego.Router("/admin/article/add",&admin.ArticleController{},"get:Add")
 	beego.Router("/admin/article/del",&admin.ArticleController{},"post:Del")
+	beego.Router("/admin/article/data-all",&admin.ArticleController{},"post:DataAll")
 
 	//七牛
 	beego.Router("/admin/upload/get-token",&admin.UploadController{},"get:QiniuToken")
 	//图片上传
 	beego.Router("/admin/upload/image",&admin.UploadController{},"post:UploadFileImg")
+	beego.Router("/admin/upload/edit-image",&admin.UploadController{},"get:EditUploadFileImg")
 
 }

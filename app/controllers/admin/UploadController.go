@@ -18,6 +18,7 @@ type Sizer interface {
 }
 const (
 	LOCAL_FILE_DIR    = "static/uploads/file"
+	EDIT_FILE_DIR= "static/uploads/file_edit"
 	MIN_FILE_SIZE     = 1       // bytes
 	MAX_FILE_SIZE     = 5000000 // bytes
 	IMAGE_TYPES       = "(jpg|gif|p?jpeg|(x-)?png)"
@@ -63,7 +64,7 @@ func (this *UploadController) UploadFileImg() {
 	defer f.Close()
 	if err != nil {
 		fmt.Println("getfile err ", err)
-		json = map[string]interface{}{"code":500,"msg":"文件错误"}
+		json = map[string]interface{}{"code":500,"msg":"文件错误","state":"ERROR"}
 		this.Success(json)
 		return
 	} else {
@@ -74,7 +75,7 @@ func (this *UploadController) UploadFileImg() {
 			Type: ext,
 		}
 		if !fi.ValidateType() {
-			json = map[string]interface{}{"code":500,"msg":"invalid file type"}
+			json = map[string]interface{}{"code":500,"msg":"invalid file type","state":"ERROR"}
 			this.Success(json)
 			return
 		}
@@ -93,7 +94,54 @@ func (this *UploadController) UploadFileImg() {
 		if err == nil {
 			Url = "/" + imgPath
 		}
-		json = map[string]interface{}{"code":200,"msg":"上传成功","src":Url}
+		json = map[string]interface{}{"code":200,"msg":"上传成功","src":Url,"state":"SUCCESS","title":h.Filename,"size":h.Size,"url":Url,"type":ext}
+
+		this.Success(json)
+	}
+}
+//编辑器图片上传
+func (this *UploadController) EditUploadFileImg() {
+	f, h, err := this.GetFile("file")
+	
+	t := time.Now()
+	path := EDIT_FILE_DIR+t.Format("2006-01-02")
+
+	var json interface{}
+	defer f.Close()
+	if err != nil {
+		fmt.Println("getfile err ", err)
+		json = map[string]interface{}{"code":500,"msg":"文件错误","state":"ERROR","imageActionName":"edit-image","imagePath":EDIT_FILE_DIR}
+		this.Success(json)
+		return
+	} else {
+		fmt.Println("getfile err 1", err)
+		var Url string
+		ext := file.Ext(h.Filename)
+		fi := &FileInfo{
+			Name: h.Filename,
+			Type: ext,
+		}
+		if !fi.ValidateType() {
+			json = map[string]interface{}{"code":500,"msg":"invalid file type","state":"ERROR"}
+			this.Success(json)
+			return
+		}
+		var fileSize int64
+		if sizeInterface, ok := f.(Sizer); ok {
+			fileSize = sizeInterface.Size()
+			fmt.Println(fileSize)
+		}
+		fileExt := strings.TrimLeft(ext, ".")
+		fileSaveName := fmt.Sprintf("%s_%d%s", fileExt, time.Now().Unix(), ext)
+		imgPath := fmt.Sprintf("%s/%s", path, fileSaveName)
+
+		file.InsureDir(path)
+
+		this.SaveToFile("file", imgPath) // 保存位置在 static/upload,没有文件夹要先创建
+		if err == nil {
+			Url = "/" + imgPath
+		}
+		json = map[string]interface{}{"code":200,"msg":"上传成功","src":Url,"state":"SUCCESS","title":h.Filename,"size":h.Size,"url":Url,"type":ext}
 
 		this.Success(json)
 	}

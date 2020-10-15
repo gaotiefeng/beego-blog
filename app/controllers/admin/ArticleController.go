@@ -64,3 +64,12 @@ func (this *ArticleController) Del(){
 	}
 	this.ResponseSuccess(constants.SUCCESS,"删除成功",num)
 }
+
+//全部文章数据
+func (this *ArticleController) DataAll() {
+	_,data,err := Dao.ArticleDaoDataAll()
+	if err != nil {
+		this.ResponseError(constants.SERVERERROR,"查询失败",data)
+	}
+	this.ResponseSuccess(constants.SUCCESS,"数据列表",data)
+}
