@@ -31,3 +31,30 @@ func ArticleDaoCount() (count int64) {
 
 	return count
 }
+//添加
+func ArticleDaoInsert(article models.Article) (err error) {
+	//orm object
+	o := orm.NewOrm()
+	//insert
+	_,err = o.Insert(&article)
+	return err
+}
+//更新
+func ArticleDaoUpdate(article models.Article) (num int64,err error) {
+	o := orm.NewOrm()
+
+	num,err = o.Update(&article, "Name","Content","Image","ClassId")
+
+	return num,err
+}
+//删除
+func ArticleDaoDelete(id int) (num int64, err error) {
+	//orm object
+	o := orm.NewOrm()
+	//struct object
+	article := models.Article{}
+	article.Id = id
+	num, err = o.Delete(&article)
+
+	return num, err
+}
