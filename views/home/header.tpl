@@ -48,7 +48,12 @@
 						</dl>
 					</li>
 					{{end}}
+					<li class="layui-nav-item">
+                    						<a href="/">登录</a>
+                    </li>
 				</ul>
+
+
 
 			</div>
 		</div>

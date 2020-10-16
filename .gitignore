@@ -4,6 +4,8 @@
 beego-blog.exe
 beego-blog.exe~
 conf/app.conf
+runtime/*
 runtime/logs/*
 static
 go_build_main_go.exe
+go.mod/go.sum
