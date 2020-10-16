@@ -10,6 +10,9 @@ func init() {
 	beego.Router("/admin/login/login", &admin.LoginController{},"post:Login")
 
 	beego.Router("/admin/index/index",&admin.IndexController{},"get:Index")
+	//分类
+	beego.Router("/admin/class/child",&admin.ClassController{},"post:GetChild")
+
 	//文章
 	beego.Router("/admin/article/index",&admin.ArticleController{},"get:Index")
 	beego.Router("/admin/article/save",&admin.ArticleController{},"post:Save")
@@ -22,6 +25,6 @@ func init() {
 	beego.Router("/admin/upload/get-token",&admin.UploadController{},"get:QiniuToken")
 	//图片上传
 	beego.Router("/admin/upload/image",&admin.UploadController{},"post:UploadFileImg")
-	beego.Router("/admin/upload/edit-image",&admin.UploadController{},"get:EditUploadFileImg")
+	beego.Router("/admin/upload/edit-image",&admin.UploadController{},"*:EditUploadFileImg")
 
 }

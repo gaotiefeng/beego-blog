@@ -10,7 +10,7 @@ import (
  */
 func GetByConfigKey(key string) (value string) {
 	if key == "" {
-		beego.Error("getByconfigkey is empty")
+		beego.Error("get Byconfigkey is empty")
 		return ""
 	}
 	config :=  Dao.FindByConfigKey(key)

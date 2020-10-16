@@ -2,8 +2,10 @@ package admin
 
 import (
 	"beego/app/constants"
+	"beego/app/models"
 	"beego/app/service/Admin"
 	"beego/app/service/Dao"
+	"github.com/astaxie/beego"
 )
 
 type ArticleController struct {
@@ -33,10 +35,23 @@ func (this *ArticleController) List()  {
 //添加文章页面
 func (this *ArticleController) Add(){
 	id, _ := this.GetInt("id",0)
+	article := models.Article{}
+	classInfo := models.Class{}
+	childInfo := models.Class{}
 	if id != 0 {
-		article,_ := Dao.ArticleDaoFind(id)
-		this.Data["article"] = article
+		article,_ = Dao.ArticleDaoFind(id)
+		classInfo,_ = Dao.ClassFirst(article.ClassId)
+		childInfo,_ = Dao.ClassFirst(article.ChildId)
 	}
+	this.Data["article"] = article
+	this.Data["classInfo"] = classInfo
+	this.Data["childInfo"] = childInfo
+
+	class,_ := Dao.ClassFindParent(0)
+	this.Data["class"] = class
+	classAll,_ := Dao.ClassFindAll()
+	this.Data["class_all"] = classAll
+	beego.Info(class)
 	this.Layout = "admin/layout.html"
 	this.TplName = "admin/article/add.html"
 }
@@ -46,9 +61,10 @@ func (this *ArticleController) Save() {
 	id, _ := this.GetInt("id",0)
 	name := this.GetString("name")
 	classId,_ := this.GetInt("class_id",0)
+	childId,_ := this.GetInt("child_id",0)
 	content := this.GetString("content")
 	image := this.GetString("image")
-	num,err := Admin.ArticleSave(id,name,content,image,classId)
+	num,err := Admin.ArticleSave(id,name,content,image,classId,childId)
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"添加失败",num)
 	}

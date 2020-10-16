@@ -7,7 +7,7 @@ import (
 )
 
 //文章更新或添加
-func ArticleSave(id int,name string,content string,image string,classId int) (num int64,err error)  {
+func ArticleSave(id int,name string,content string,image string,classId int,childId int) (num int64,err error)  {
 
 	//struct object
 	article := models.Article{}
@@ -17,6 +17,7 @@ func ArticleSave(id int,name string,content string,image string,classId int) (nu
 	article.Name = name
 	article.Image = image
 	article.ClassId = classId
+	article.ChildId = childId
 	article.CreatedAt = time.Now()
 	if id == 0 {
 		num = 0

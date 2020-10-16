@@ -43,7 +43,7 @@ func ArticleDaoInsert(article models.Article) (err error) {
 func ArticleDaoUpdate(article models.Article) (num int64,err error) {
 	o := orm.NewOrm()
 
-	num,err = o.Update(&article, "Name","Content","Image","ClassId")
+	num,err = o.Update(&article, "Name","Content","Image","ClassId","ChildId")
 
 	return num,err
 }

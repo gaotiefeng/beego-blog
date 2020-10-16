@@ -101,12 +101,17 @@ func (this *UploadController) UploadFileImg() {
 }
 //编辑器图片上传
 func (this *UploadController) EditUploadFileImg() {
+
+	var json interface{}
 	f, h, err := this.GetFile("file")
-	
+	if err != nil {
+		json = map[string]interface{}{"code":200,"msg":"文件错误","state":"ERROR","imageActionName":"edit-image","imagePath":EDIT_FILE_DIR}
+		this.Success(json)
+		return
+	}
 	t := time.Now()
 	path := EDIT_FILE_DIR+t.Format("2006-01-02")
 
-	var json interface{}
 	defer f.Close()
 	if err != nil {
 		fmt.Println("getfile err ", err)

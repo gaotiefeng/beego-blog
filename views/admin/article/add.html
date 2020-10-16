@@ -1,3 +1,8 @@
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="/resources/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/resources/ueditor/editor_api.js"></script>
 <form class="layui-form" >
     <div class="layui-form-item">
         <label class="layui-form-label">文章名称</label>
@@ -7,13 +12,21 @@
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">文章分类</label>
+        <label class="layui-form-label">一级分类</label>
         <div class="layui-input-block">
-            <select name="class_id" lay-verify="required">
-
-                <option value="" selected>请选择</option>
-                <option value="1" selected>请选择1</option>
-
+            <select name="class_id" lay-verify="required" lay-filter="class">
+                <option value="0" selected>请选择</option>
+                {{ range .class}}
+                <option value="{{.ClassId}}" {{ if eq .ClassId $.classInfo.ClassId}} selected {{end}} >{{.Name}}</option>
+                {{end}}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">二级分类</label>
+        <div class="layui-input-block">
+            <select name="child_id" lay-verify="required" id="child_id">
+                <option value="{{.childInfo.ClassId}}" selected>{{.childInfo.Name}}</option>
             </select>
         </div>
     </div>
@@ -39,7 +52,7 @@
         <label class="layui-form-label">文章内容</label>
         <div class="layui-input-block">
             <!-- 加载编辑器的容器 -->
-            <script id="container" name="content" type="text/plain">{{.article.Content}}</script>
+            <script id="container" name="content" type="text/plain">{{.article.Content | str2html}}</script>
 
         </div>
     </div>
@@ -51,14 +64,11 @@
         </div>
     </div>
 </form>
-<!-- 配置文件 -->
-<script type="text/javascript" src="/resources/ueditor/ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="/resources/ueditor/editor_api.js"></script>
 <script>
     //Demo
-    layui.use('form', function(){
+    layui.use(['form','layer'], function(){
         var form = layui.form;
+        layer = layui.layer;
         var ue = UE.getEditor('container',{
             elementPathEnabled:false,
             //默认的编辑区域高度
@@ -111,6 +121,34 @@
                 }
             });
             return false;
+        });
+        //二级联动
+        form.on('select(class)', function (data) {
+            //alert(data.value);
+            $.ajax({
+                url: "/admin/class/child" , //请求地址
+                type: "POST" , //请求方式
+                dataType:  "JSON" , //返回数据类型
+                data: {id:data.value}, //发送的参数
+                success: function (res){
+                    console.log(res.data)
+                    if (res.code == 200) {
+                        $( '#child_id option').hide();
+                        var  proHtml =  '' ;
+                        for ( var  o  in  res.data){
+                            proHtml +=  '<option value="'  + res.data[o].class_id +   '">'  + res.data[o].class_name +  '</option>' ;
+                        }
+                        $( '#child_id' ).html(proHtml);
+                        form.render();
+                    }else {
+                        alert(res.msg);
+                    }
+                },
+                error: function (){
+                    //失败执行的方法
+                    alert( "error" );
+                }
+            })
         });
     });
 </script>

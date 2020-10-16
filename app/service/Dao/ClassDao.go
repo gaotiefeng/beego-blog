@@ -4,16 +4,24 @@ import (
 	"beego/app/models"
 	"github.com/astaxie/beego/orm"
 )
+//分类信息
+func ClassFirst(id int)  (models.Class,error){
+	o := orm.NewOrm()
+	class := models.Class{ClassId: id}
+	err := o.Read(&class)
 
+	return class,err
+}
 /**
-查询一级分类
+0为一级分类
+查寻pid的子集
  */
 func ClassFindParent(pid int) (*[]models.Class,error) {
 	classModel := new([]models.Class)
 
 	o := orm.NewOrm()
 	qs := o.QueryTable("class")
-	_,err  := qs.Filter("pid",pid).OrderBy("sort desc").All(classModel)
+	_,err  := qs.Filter("pid",pid).OrderBy("-sort").All(classModel)
 
 	return classModel,err
 }
@@ -23,7 +31,7 @@ func ClassFindParent(pid int) (*[]models.Class,error) {
 func GetClass(pid int) []*models.ClassTreeList {
 	o := orm.NewOrm()
 	var class []models.Class
-	_,_ = o.QueryTable("class").Filter("pid", pid).OrderBy("sort").All(&class)
+	_,_ = o.QueryTable("class").Filter("pid", pid).OrderBy("-sort").All(&class)
 	treeList := []*models.ClassTreeList{}
 	for _, v := range class{
 		child := GetClass(v.ClassId)
@@ -38,4 +46,15 @@ func GetClass(pid int) []*models.ClassTreeList {
 	}
 	return treeList
 }
+/**
+查寻所有分类
+*/
+func ClassFindAll() (*[]models.Class,error) {
+	classModel := new([]models.Class)
 
+	o := orm.NewOrm()
+	qs := o.QueryTable("class")
+	_,err  := qs.OrderBy("-sort").All(classModel)
+
+	return classModel,err
+}
