@@ -15,6 +15,11 @@ type BlogController struct {
  */
 func (this *BlogController) Index() {
 
+	classId,_ := this.GetInt("class_id",0)
+	this.Data["class_id"] = classId
+	childId,_ := this.GetInt("child_id",0)
+	this.Data["child_id"] = childId
+
 	homeBanner := service.GetByConfigKey("home_banner")
 	this.Data["home_banner"] = homeBanner
 	banner := service.GetByConfigKey("banner")

@@ -2,6 +2,7 @@ package Dao
 
 import (
 	"beego/app/models"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
 
@@ -14,14 +15,18 @@ func ArticleDaoFind(id int)  (models.Article,error){
 	return article,err
 }
 //文章列表
-func ArticleDaoList(offset int,limit int,classId int) (int64,*[]models.Article,error) {
+func ArticleDaoList(offset int,limit int,classId int,childId int) (int64,*[]models.Article,error) {
 	article := new(models.Article)
 	o := orm.NewOrm()
 	articleModel := new([]models.Article)
 
 	qs := o.QueryTable(article)
-	if classId !=0 {
-		qs.Filter("class_id",classId)
+	beego.Info(classId)
+	if classId != 0 {
+		qs = qs.Filter("class_id",classId)
+	}
+	if childId != 0 {
+		qs = qs.Filter("child_id",childId)
 	}
 	count,err := qs.Limit(limit,offset).All(articleModel)
 

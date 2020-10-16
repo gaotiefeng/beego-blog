@@ -23,3 +23,13 @@ func FindByConfigKey(key string) (config models.Config)  {
 
 	return config
 }
+//所有数据
+func FindConfigAll() (int64,*[]models.Config,error) {
+
+	config := new(models.Config)
+	o := orm.NewOrm()
+	configModel := new([]models.Config)
+	count,err := o.QueryTable(config).All(configModel)
+
+	return count,configModel,err
+}

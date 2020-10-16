@@ -20,11 +20,12 @@ func (this *ArticleController) Index()  {
 func (this *ArticleController) List()  {
 
 	classId, _ := this.GetInt("class_id",0)
+	childId, _ := this.GetInt("child_id",0)
 	page, _ := this.GetInt("page",0)
 	limit, _ := this.GetInt("limit",10)
 	offset := (page-1) * limit
 
-	_,list,err := Dao.ArticleDaoList(offset,limit,classId)
+	_,list,err := Dao.ArticleDaoList(offset,limit,classId,childId)
 	count := Dao.ArticleDaoCount()
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)

@@ -12,11 +12,12 @@ type ArticleController struct {
 func (this *ArticleController) List()  {
 
 	classId, _ := this.GetInt("class_id",0)
+	childId, _ := this.GetInt("child_id",0)
 	offset, _ := this.GetInt("offset",0)
 	limit, _ := this.GetInt("limit",10)
 	offset = (offset - 1)*limit
 
-	count,data,err := Dao.ArticleDaoList(offset,limit,classId)
+	count,data,err := Dao.ArticleDaoList(offset,limit,classId,childId)
 	if err != nil {
 		beego.Informational("article is empty")
 	}
@@ -41,7 +42,9 @@ func (this *ArticleController) Detail()  {
 		return
 	}
 	this.Data["data"] = article
-
+	class,_ := Dao.ClassFirst(article.ClassId)
+	this.Data["classInfo"] = class
+	//头部
 	treeList :=Dao.GetClass(0)
 	this.Data["class"] = treeList
 
