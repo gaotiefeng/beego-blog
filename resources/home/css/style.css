@@ -39,8 +39,8 @@ body{background-color:#eee;min-height: 100%;min-width: 320px;font-family: 'Micro
 .header {height: 64px;width:100%;background-color: #393D49;  border-bottom: 1px solid #404553;position: fixed;top:0;}
 .header_back{height: 65px;}
 .header .layui-nav{float: right;}
-.header .logo{position: absolute; left: 60px; top: 0px;}
-.header .logo img{height: 64px;}
+.header .logo{position: absolute; left: 0px; top: 0px;}
+.header .logo img{height: 61px;}
 .header .layui-nav{position: absolute; left: 10%; top: 0px; padding: 0; background: none;width:85%;}
 .header .layui-nav .layui-nav-item{line-height: 64px;width:8%;margin:0 4%;}
 .header .layui-nav .layui-nav-item a{color:#9dd396;width:80%;padding:0 10%;text-align: center;}

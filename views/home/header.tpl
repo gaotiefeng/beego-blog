@@ -23,16 +23,17 @@
 		font-size: 22px;
 		font-weight: 500;
 	}
+
 </style>
 
 		<!-- 头部 开始 -->
 		<div class="layui-header header trans_3">
 			<div class="main index_main">
 				<a class="logo" href="/">
-
+                    <img src="https://images.tfuu.cn/log.png" alt="tfuu.cn"/>
 				</a>
 				<ul class="layui-nav" lay-filter="top_nav">
-					<li class="layui-nav-item home">
+					<li class="layui-nav-item">
 						<a href="/">首页</a>
 					</li>
 					{{range .class}}
