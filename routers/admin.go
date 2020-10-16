@@ -6,9 +6,10 @@ import (
 )
 
 func init() {
-	beego.Router("/admin/login/index", &admin.LoginController{},"get:Index")
+	//登录
+	beego.Router("/admin/login", &admin.LoginController{},"get:Index")
 	beego.Router("/admin/login/login", &admin.LoginController{},"post:Login")
-
+	//面板页
 	beego.Router("/admin/index/index",&admin.IndexController{},"get:Index")
 	//分类
 	beego.Router("/admin/class/child",&admin.ClassController{},"post:GetChild")
