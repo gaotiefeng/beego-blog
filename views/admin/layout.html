@@ -76,9 +76,17 @@
     </div>
 
     <div class="layui-body">
+        <div class="layui-tab" lay-allowClose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this">文章列表</li>
+                <li class="layui-this">分类列表</li>
+            </ul>
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            {{.LayoutContent}}
+            <div class="layui-tab-content">
+                {{.LayoutContent}}
+
+            </div>
+
         </div>
     </div>
 
