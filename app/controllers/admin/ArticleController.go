@@ -19,11 +19,12 @@ func (this *ArticleController) Index()  {
 //json文章列表
 func (this *ArticleController) List()  {
 
+	classId, _ := this.GetInt("class_id",0)
 	page, _ := this.GetInt("page",0)
 	limit, _ := this.GetInt("limit",10)
 	offset := (page-1) * limit
 
-	_,list,err := Dao.ArticleDaoList(offset,limit)
+	_,list,err := Dao.ArticleDaoList(offset,limit,classId)
 	count := Dao.ArticleDaoCount()
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)

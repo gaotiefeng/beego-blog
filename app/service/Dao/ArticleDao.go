@@ -14,11 +14,16 @@ func ArticleDaoFind(id int)  (models.Article,error){
 	return article,err
 }
 //文章列表
-func ArticleDaoList(offset int,limit int) (int64,*[]models.Article,error) {
+func ArticleDaoList(offset int,limit int,classId int) (int64,*[]models.Article,error) {
 	article := new(models.Article)
 	o := orm.NewOrm()
 	articleModel := new([]models.Article)
-	count,err := o.QueryTable(article).Limit(limit,offset).All(articleModel)
+
+	qs := o.QueryTable(article)
+	if classId !=0 {
+		qs.Filter("class_id",classId)
+	}
+	count,err := qs.Limit(limit,offset).All(articleModel)
 
 	return count,articleModel,err
 }

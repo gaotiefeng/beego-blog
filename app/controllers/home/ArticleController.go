@@ -11,11 +11,12 @@ type ArticleController struct {
 
 func (this *ArticleController) List()  {
 
+	classId, _ := this.GetInt("class_id",0)
 	offset, _ := this.GetInt("offset",0)
 	limit, _ := this.GetInt("limit",10)
 	offset = (offset - 1)*limit
 
-	count,data,err := Dao.ArticleDaoList(offset,limit)
+	count,data,err := Dao.ArticleDaoList(offset,limit,classId)
 	if err != nil {
 		beego.Informational("article is empty")
 	}

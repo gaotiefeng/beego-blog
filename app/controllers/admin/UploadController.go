@@ -54,7 +54,7 @@ func (fi *FileInfo) ValidateType() (valid bool) {
 	fi.Error = "Filetype not allowed"
 	return false
 }
-//图片上传
+//图片上传//本地上传
 func (this *UploadController) UploadFileImg() {
 	f, h, err := this.GetFile("file")
 	t := time.Now()
@@ -100,12 +100,13 @@ func (this *UploadController) UploadFileImg() {
 	}
 }
 //编辑器图片上传
+//本地上传
 func (this *UploadController) EditUploadFileImg() {
 
 	var json interface{}
-	f, h, err := this.GetFile("file")
+	f, h, err := this.GetFile("edit_file")
 	if err != nil {
-		json = map[string]interface{}{"code":200,"msg":"文件错误","state":"ERROR","imageActionName":"edit-image","imagePath":EDIT_FILE_DIR}
+		json = map[string]interface{}{"code":200,"msg":"配置数据|错误","imageUrlPrefix":constants.HOST,"state":"ERROR","imageActionName":"edit-image","imagePath":EDIT_FILE_DIR,"imageFieldName":"edit_file","imageMaxSize":50048,"imageAllowFiles":[7]string{".xls",".pdf",".png", ".jpg", ".jpeg", ".gif", ".bmp"}}
 		this.Success(json)
 		return
 	}
@@ -142,7 +143,7 @@ func (this *UploadController) EditUploadFileImg() {
 
 		file.InsureDir(path)
 
-		this.SaveToFile("file", imgPath) // 保存位置在 static/upload,没有文件夹要先创建
+		this.SaveToFile("edit_file", imgPath) // 保存位置在 static/upload,没有文件夹要先创建
 		if err == nil {
 			Url = "/" + imgPath
 		}
