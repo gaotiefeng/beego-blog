@@ -72,7 +72,9 @@
         var ue = UE.getEditor('container',{
             elementPathEnabled:false,
             //默认的编辑区域高度
-            initialFrameHeight:300
+            initialFrameHeight:300,
+            initialFrameWidth: null ,
+            autoHeightEnabled: false
         });
     //对编辑器的操作最好在编辑器ready之后再做
         ue.ready(function(){
