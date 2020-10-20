@@ -17,7 +17,7 @@ $(function () {
             elem: '#article'
             ,id:'article_ex'
             ,height: 600
-            ,url: '/admin/article/list/' //数据接口
+            ,url: '/admin/article-list' //数据接口
             ,title:'文章列表'
             ,page: true
             ,cols: [[ //表头
@@ -55,7 +55,7 @@ $(function () {
         $("#demo_all_export").click(function () {
             //使用ajax请求获取所有数据
             $.ajax({
-                url: "/admin/article/data-all",
+                url: "/admin/article-data-all",
                 type: 'post',
                 data: {
                     type: 1
@@ -80,7 +80,7 @@ $(function () {
                         yes: function(index){
                             console.log(id);
                             $.ajax({
-                                url:"/admin/article/del",
+                                url:"/admin/article-del",
                                 data:{'id':id},
                                 type:"Post",
                                 dataType:"json",
@@ -102,7 +102,7 @@ $(function () {
                     });
                 });
             }else if (layev == 'edit') {
-                window.location.href = "/admin/article/add?id="+id
+                window.location.href = "/admin/article-add?id="+id
             }
         })
     });

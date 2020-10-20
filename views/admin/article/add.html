@@ -104,7 +104,7 @@
                             content: '您已成功添加新的产品！',
                             btn: ['继续添加', '完成'],
                             yes: function(index, layero) {
-                                window.location.href = "/admin/article/add"
+                                window.location.href = "/admin/article-add"
                             },
                             btn2: function(index, layero) {
                                 window.location.href = "/admin/article-index"
@@ -128,7 +128,7 @@
         form.on('select(class)', function (data) {
             //alert(data.value);
             $.ajax({
-                url: "/admin/class/child" , //请求地址
+                url: "/admin/class-child" , //请求地址
                 type: "POST" , //请求方式
                 dataType:  "JSON" , //返回数据类型
                 data: {id:data.value}, //发送的参数
@@ -161,7 +161,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: '/admin/upload/image'
+            ,url: '/admin/upload-image'
             ,accept:'images'
             ,size:50000
             ,before: function(obj){
