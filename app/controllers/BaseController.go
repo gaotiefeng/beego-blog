@@ -25,7 +25,10 @@ func (c *BaseController) Notfound() {
 
 	c.TplName = "404.tpl"
 }
+func (c *BaseController) Error() {
 
+	c.TplName = "500.tpl"
+}
 
 func (c *BaseController) Defend() {
 

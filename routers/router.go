@@ -12,6 +12,7 @@ func init()  {
 	beego.Router("/",&home.BlogController{},"get:Index")
 
 	beego.Router("/404",&controllers.BaseController{},"get:Notfound")
+	beego.Router("/500",&controllers.BaseController{},"get:Error")
 	beego.Router("/505",&controllers.BaseController{},"get:Defend")
 
 }
