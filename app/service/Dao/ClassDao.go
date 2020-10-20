@@ -79,3 +79,26 @@ func ClassDaoCount() (count int64) {
 
 	return count
 }
+//添加
+func ClassDaoInsert(class models.Class) (err error) {
+	//orm object
+	o := orm.NewOrm()
+	//insert
+	_,err = o.Insert(&class)
+	return err
+}
+//更新
+func ClassDaoUpdate(class models.Class) (num int64,err error) {
+	o := orm.NewOrm()
+
+	num,err = o.Update(&class, "Name","Pid","Sort")
+
+	return num,err
+}
+
+func ClassDaoDel(id int)  (num int64,err error){
+	class := models.Class{ClassId: id}
+	o := orm.NewOrm()
+	num,err = o.Delete(&class)
+	return num,err
+}

@@ -17,6 +17,9 @@ func init() {
 
 	beego.Router("/admin/class-index",&admin.ClassController{},"get:Index")
 	beego.Router("/admin/class-add",&admin.ClassController{},"get:Add")
+	beego.Router("/admin/class-save",&admin.ClassController{},"Post:Save")
+	beego.Router("/admin/class-del",&admin.ClassController{},"Post:Del")
+
 
 	//文章
 	beego.Router("/admin/article-index",&admin.ArticleController{},"get:Index")

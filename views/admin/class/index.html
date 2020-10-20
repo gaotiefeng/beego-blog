@@ -47,7 +47,7 @@ $(function () {
 
         table.on('tool(test)',function (obj) {
             layev = obj.event;
-            id = obj.data.id;
+            id = obj.data.class_id;
             if (layev == 'del') {
                 layui.use('layer',function(){
                     var layer = layui.layer;
@@ -57,7 +57,7 @@ $(function () {
                         yes: function(index){
                             console.log(id);
                             $.ajax({
-                                url:"/admin/article/del",
+                                url:"/admin/class-del",
                                 data:{'id':id},
                                 type:"Post",
                                 dataType:"json",
@@ -79,7 +79,7 @@ $(function () {
                     });
                 });
             }else if (layev == 'edit') {
-                window.location.href = "/admin/article/add?id="+id
+                window.location.href = "/admin/class-add?id="+id
             }
         })
     });

@@ -2,29 +2,29 @@
     <div class="layui-form-item">
         <label class="layui-form-label">分类名称</label>
         <div class="layui-input-block">
-            <input type="text" value="{{.article.Name}}" name="name" required  lay-verify="required" placeholder="请输入文章名称" autocomplete="off" class="layui-input">
+            <input type="text" value="{{.classInfo.Name}}" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">顶级分类</label>
-            <select name="pid" lay-verify="required" >
-                <option value="0" selected>请选择</option>
-                <option value="1" selected>请选择</option>
-                {{/*{{ range .class}}
-                    <option value="{{.ClassId}}" */}}{{/*{{ if eq .ClassId $.classInfo.ClassId}} selected {{end}}*/}}{{/* >{{.Name}}</option>
-                {{end}}*/}}
+        <div class="layui-input-block">
+            <select name="pid" lay-verify="required">
+                <option value="0" selected>顶级分类</option>
+                {{ range .class}}
+                    <option value="{{.ClassId}}" {{ if eq .ClassId $.classInfo.Pid}} selected {{end}} >{{.Name}}</option>
+                {{end}}
             </select>
+        </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">排序</label>
         <div class="layui-input-block">
-            <input type="text" value="{{.article.Sort}}" name="sort" required  lay-verify="required" placeholder="请输入文章名称" autocomplete="off" class="layui-input">
+            <input type="number" value="{{.classInfo.Sort}}" name="sort" required  lay-verify="required" placeholder="请输入排序" autocomplete="off" class="layui-input">
         </div>
     </div>
 
-
-    <input type="hidden" name="id" value="{{.article.Id}}" >
+    <input type="hidden" name="id" value="{{.classInfo.ClassId}}" >
 
 
     <div class="layui-form-item">
@@ -34,3 +34,49 @@
         </div>
     </div>
 </form>
+<script>
+    //Demo
+    layui.use(['form','layer'], function(){
+        var form = layui.form;
+        layer = layui.layer;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            console.log(JSON.stringify(data.field));
+            $.ajax({
+                url: "/admin/class-save",
+                type: 'POST',
+                data: data.field,
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.code == 200) {
+                        layer.open({
+                            type: 0,
+                            area: ['300px', '180px'],
+                            title: '恭喜您，操作成功！',
+                            content: '您已成功添加新的产品！',
+                            btn: ['继续添加', '完成'],
+                            yes: function(index, layero) {
+                                window.location.href = "/admin/class-add"
+                            },
+                            btn2: function(index, layero) {
+                                window.location.href = "/admin/class-index"
+                            }
+                        });
+                    }else {
+                        layer.msg('添加失败',{icon: 5},{
+                            time: 2000
+                        }, function() {});
+                    }
+                },
+                error:function(data){
+                    layer.msg('添加失败',{icon: 5},{
+                        time: 2000
+                    }, function() {});
+                }
+            });
+            return false;
+        });
+    });
+</script>
