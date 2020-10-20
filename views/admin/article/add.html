@@ -90,7 +90,7 @@
             console.log(JSON.stringify(data.field));
             data.field.des =  ue.getContent();
             $.ajax({
-                url: "/admin/article/save",
+                url: "/admin/article-save",
                 type: 'POST',
                 data: data.field,
                 async: false,
