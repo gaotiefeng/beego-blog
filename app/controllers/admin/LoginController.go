@@ -54,3 +54,7 @@ func (this *LoginController) Success (data interface{}) () {
 	this.Data["json"] = data
 	this.ServeJSON()
 }
+//计算开始位置
+func (this *LoginController) Page(page int,limit int) (offset int) {
+	return (page-1)*limit
+}

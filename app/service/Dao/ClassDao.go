@@ -58,3 +58,24 @@ func ClassFindAll() (*[]models.Class,error) {
 
 	return classModel,err
 }
+/**
+查寻所有分类
+*/
+func ClassList(offset int,limit int) (*[]models.Class,error) {
+	classModel := new([]models.Class)
+
+	o := orm.NewOrm()
+	qs := o.QueryTable("class")
+	_,err  := qs.Limit(limit).Offset(offset).OrderBy("-sort").All(classModel)
+
+	return classModel,err
+}
+//总条数
+func ClassDaoCount() (count int64) {
+
+	class := new(models.Class)
+	o := orm.NewOrm()
+	count,_ = o.QueryTable(class).Count()
+
+	return count
+}

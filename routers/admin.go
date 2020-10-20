@@ -13,9 +13,13 @@ func init() {
 	beego.Router("/admin/index/index",&admin.IndexController{},"get:Index")
 	//分类
 	beego.Router("/admin/class/child",&admin.ClassController{},"post:GetChild")
+	beego.Router("/admin/class-list",&admin.ClassController{},"get:List")
+
+	beego.Router("/admin/class-index",&admin.ClassController{},"get:Index")
+	beego.Router("/admin/class-add",&admin.ClassController{},"get:Add")
 
 	//文章
-	beego.Router("/admin/article/index",&admin.ArticleController{},"get:Index")
+	beego.Router("/admin/article-index",&admin.ArticleController{},"get:Index")
 	beego.Router("/admin/article/save",&admin.ArticleController{},"post:Save")
 	beego.Router("/admin/article/list",&admin.ArticleController{},"get:List")
 	beego.Router("/admin/article/add",&admin.ArticleController{},"get:Add")
