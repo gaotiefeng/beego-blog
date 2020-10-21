@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-type admin struct {
+type Admin struct {
 	Id      int		 `orm:"column(id);auto" description:"id" json:"id"`
 	UserName    string	`orm:"column(user_name)" description:"user_name" json:"user_name"`
 	Password	string	`orm:"column(password)" description:"password" json:"password"`

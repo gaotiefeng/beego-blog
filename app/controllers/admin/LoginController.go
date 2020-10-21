@@ -2,6 +2,8 @@ package admin
 
 import (
 	"beego/app/constants"
+	"beego/app/service/Dao"
+	"beego/tool"
 	"github.com/astaxie/beego"
 )
 
@@ -22,6 +24,14 @@ func (this *LoginController) Login()  {
 	json["userName"] = userName
 	json["password"] = password
 
+	data,err := Dao.GetByAdmin(userName)
+	if err != nil {
+		this.ResponseError(500,"用户不存在",json)
+	}
+	userPassword := tool.Md5V(password)
+	if  data.Password != userPassword{
+		this.ResponseError(500,"用户密码错误",json)
+	}
 	this.ResponseListSuccess(constants.SUCCESS,"登录成功",json,count)
 }
 
