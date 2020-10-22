@@ -21,18 +21,27 @@ func (this *LoginController) Login()  {
 	password := this.GetString("password")
 	var count int64
 	var json = make(map[string]interface{})
-	json["userName"] = userName
+	json["user_name"] = userName
 	json["password"] = password
 
 	data,err := Dao.GetByAdmin(userName)
 	if err != nil {
 		this.ResponseError(500,"用户不存在",json)
 	}
+	this.SetSession("adminId",data.Id)
+	this.SetSession("adminName",data.UserName)
+
 	userPassword := tool.Md5V(password)
 	if  data.Password != userPassword{
 		this.ResponseError(500,"用户密码错误",json)
 	}
 	this.ResponseListSuccess(constants.SUCCESS,"登录成功",json,count)
+}
+//退出登录
+func (this *LoginController) LoginOut() {
+	this.DelSession("adminId")
+	this.DelSession("adminName")
+	this.Redirect("/admin/login",302)
 }
 
 func (this *LoginController) ResponseError (code int,message string, data interface{}) () {

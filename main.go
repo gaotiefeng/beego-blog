@@ -2,6 +2,7 @@ package main
 
 import (
 	"beego/app/models"
+	"beego/app/service/Filter"
 	_ "beego/routers"
 	"github.com/astaxie/beego"
 	_ "github.com/astaxie/beego/cache/redis"
@@ -34,6 +35,12 @@ func init()  {
 func main(){
 
 	orm.Debug = true
+	beego.InsertFilter("/admin/*",beego.BeforeRouter,Filter.AdminFilter)
+	//打开session
+	beego.BConfig.WebConfig.Session.SessionOn = true
 
 	beego.Run()
 }
+
+
+

@@ -9,6 +9,8 @@ func init() {
 	//登录
 	beego.Router("/admin/login", &admin.LoginController{},"get:Index")
 	beego.Router("/admin/login-login", &admin.LoginController{},"post:Login")
+	beego.Router("/admin/login-out", &admin.LoginController{},"get:LoginOut")
+
 	//面板页
 	beego.Router("/admin/index",&admin.IndexController{},"get:Index")
 	//分类
