@@ -107,7 +107,7 @@
 							<a href="/">返回列表</a>
 						</div>
 						<div class="next">下一篇：
-							<a href="/article/93.html">js&jq ,json字符串转换json对象 ,json对象转换json字符串</a>
+							<a href="/admin/article-index">下一篇</a>
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -124,18 +124,16 @@
 				<div class="second_categorys_container">
 					<h3>栏目导航</h3>
 					<ol class="seond_category trans_3">
+						{{range .class}}
 						<li>
-							<a href="/article-lists/8.html" class="layui-btn layui-btn-primary trans_1">杂谈</a>
+							<a href="/?class_id={{.ClassId}}" class="layui-btn layui-btn-primary trans_1">{{.Name}}</a>
 						</li>
-						<li>
-							<a href="/article-lists/9.html" class="layui-btn layui-btn-primary trans_1">PHP</a>
-						</li>
-						<li>
-							<a href="/article-lists/16.html" class="layui-btn layui-btn-primary trans_1">Python</a>
-						</li>
-						<li>
-							<a href="/article-lists/17.html" class="layui-btn layui-btn-primary trans_1">微信小程序</a>
-						</li>
+								{{range .Children}}
+								<li>
+									<a href="/?child_id={{.ClassId}}" class="layui-btn layui-btn-primary trans_1">{{.Name}}</a>
+								</li>
+								{{end}}
+						{{end}}
 					</ol>
 				</div>
 
