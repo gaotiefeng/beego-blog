@@ -56,6 +56,9 @@ func (this *ArticleController) Detail()  {
 	//点击加1
 	var articleClick = models.Article{Id: article.Id,Click: article.Click+1}
 	Dao.ArticleDaoUpdateClick(articleClick)
+	//相关文章
+	_,articleList,_ := Dao.ArticleDaoList(0,10,article.ClassId,0)
+	this.Data["articleList"] = articleList
 
 	this.TplName = "home/article/detail.html"
 }

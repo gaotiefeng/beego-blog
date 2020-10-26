@@ -138,13 +138,14 @@
 				</div>
 
 				<div class="hot_list">
-					<h3>相关文章</h3>
+					<h3>推荐文章</h3>
 					<ol class="page_right_list trans_3">
+						{{range .articleList}}
 						<li>
-							<a href="/article/6.html">阻止a标签href默认跳转事件</a><span class="hits"> 4854 ℃ </span></li>
-						<li>
-							<a href="/article/53.html">CSS控制文字，超出部分显示省略号，多行文本超出显示省略号</a><span class="hits"> 4623 ℃ </span></li>
-
+							<a href="/?class_id={{.ClassId}}">{{.Name}}</a>
+							<span class="hits">{{.Click}}</span>
+						</li>
+						{{end}}
 					</ol>
 				</div>
 				<div class="mobile_qrcode_container">
