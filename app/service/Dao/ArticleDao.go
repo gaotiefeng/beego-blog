@@ -57,6 +57,14 @@ func ArticleDaoUpdate(article models.Article) (num int64,err error) {
 
 	return num,err
 }
+//更新点击量
+func ArticleDaoUpdateClick(article models.Article) (num int64,err error) {
+	o := orm.NewOrm()
+
+	num,err = o.Update(&article, "Click")
+
+	return num,err
+}
 //删除
 func ArticleDaoDelete(id int) (num int64, err error) {
 	//orm object
@@ -76,4 +84,20 @@ func ArticleDaoDataAll() (int64,*[]models.Article,error) {
 	count,err := o.QueryTable(article).All(articleModel)
 
 	return count,articleModel,err
+}
+//上一篇
+func ArticleDaoPre(id int) (*models.Article,error)  {
+	o := orm.NewOrm()
+	article := new(models.Article)
+	err := o.QueryTable(article).Filter("id__lt",id).OrderBy("-id").One(article)
+
+	return article,err
+}
+//下一篇
+func ArticleDaoNext(id int) (*models.Article,error)  {
+	o := orm.NewOrm()
+	article := new(models.Article)
+	err := o.QueryTable(article).Filter("id__gt",id).OrderBy("id").One(article)
+
+	return article,err
 }

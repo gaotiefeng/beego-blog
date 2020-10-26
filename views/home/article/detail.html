@@ -104,10 +104,10 @@
 					</div>
 					<div class="prev_next">
 						<div class="prev">上一篇：
-							<a href="/">返回列表</a>
+							<a href="/article/detail?id={{.pre.Id}}">{{.pre.Name}}</a>
 						</div>
 						<div class="next">下一篇：
-							<a href="/admin/article-index">下一篇</a>
+                            <a href="/article/detail?id={{.next.Id}}">{{.next.Name}}</a>
 						</div>
 						<div class="clear"></div>
 					</div>

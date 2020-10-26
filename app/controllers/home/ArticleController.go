@@ -2,6 +2,7 @@ package home
 
 import (
 	"beego/app/controllers"
+	"beego/app/models"
 	"beego/app/service/Dao"
 	"github.com/astaxie/beego"
 )
@@ -47,6 +48,14 @@ func (this *ArticleController) Detail()  {
 	//头部
 	treeList :=Dao.GetClass(0)
 	this.Data["class"] = treeList
-
+	//上一篇
+	pre,_ :=Dao.ArticleDaoPre(id)
+	this.Data["pre"] = pre
+	next,_ :=Dao.ArticleDaoNext(id)
+	this.Data["next"] = next
+	//点击加1
+	var articleClick = models.Article{Id: article.Id,Click: article.Click+1}
+	Dao.ArticleDaoUpdateClick(articleClick)
+	
 	this.TplName = "home/article/detail.html"
 }
