@@ -7,7 +7,7 @@ import (
 )
 
 //文章更新或添加
-func ArticleSave(id int,name string,content string,image string,classId int,childId int) (num int64,err error)  {
+func ServiceAdminArticleSave(id int,name string,content string,image string,classId int,childId int) (num int64,err error)  {
 
 	//struct object
 	article := models.Article{}

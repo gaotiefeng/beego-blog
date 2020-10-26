@@ -66,7 +66,7 @@ func (this *ArticleController) Save() {
 	childId,_ := this.GetInt("child_id",0)
 	content := this.GetString("content")
 	image := this.GetString("image")
-	num,err := Admin.ArticleSave(id,name,content,image,classId,childId)
+	num,err := Admin.ServiceAdminArticleSave(id,name,content,image,classId,childId)
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"添加失败",num)
 	}

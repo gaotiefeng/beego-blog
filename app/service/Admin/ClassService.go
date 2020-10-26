@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func ClassSave(id int,name string,sort int,pid int) (num int64,err error) {
+func ServiceAdminClassSave(id int,name string,sort int,pid int) (num int64,err error) {
 	//struct object
 	class := models.Class{}
 	//对结构体对象赋值

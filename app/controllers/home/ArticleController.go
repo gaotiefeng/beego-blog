@@ -46,7 +46,7 @@ func (this *ArticleController) Detail()  {
 	class,_ := Dao.ClassFirst(article.ClassId)
 	this.Data["classInfo"] = class
 	//头部
-	treeList :=Dao.GetClass(0)
+	treeList :=Dao.ClassGetAll(0)
 	this.Data["class"] = treeList
 	//上一篇
 	pre,_ :=Dao.ArticleDaoPre(id)
@@ -56,6 +56,6 @@ func (this *ArticleController) Detail()  {
 	//点击加1
 	var articleClick = models.Article{Id: article.Id,Click: article.Click+1}
 	Dao.ArticleDaoUpdateClick(articleClick)
-	
+
 	this.TplName = "home/article/detail.html"
 }

@@ -25,7 +25,7 @@ func (this *BlogController) Index() {
 	banner := service.GetByConfigKey("banner")
 	this.Data["banner"] = banner
 
-	treeList :=Dao.GetClass(0)
+	treeList :=Dao.ClassGetAll(0)
 	this.Data["class"] = treeList
 	this.Data["count"] = Dao.ArticleDaoCount()
 

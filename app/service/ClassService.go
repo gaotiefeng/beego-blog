@@ -7,5 +7,5 @@ import (
 
 func GetClassChild(pid int) []*models.ClassTreeList {
 
-	return Dao.GetClass(pid)
+	return Dao.ClassGetAll(pid)
 }

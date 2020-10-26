@@ -28,13 +28,13 @@ func ClassFindParent(pid int) (*[]models.Class,error) {
 /**
 递归查询分类
  */
-func GetClass(pid int) []*models.ClassTreeList {
+func ClassGetAll(pid int) []*models.ClassTreeList {
 	o := orm.NewOrm()
 	var class []models.Class
 	_,_ = o.QueryTable("class").Filter("pid", pid).OrderBy("-sort").All(&class)
 	treeList := []*models.ClassTreeList{}
 	for _, v := range class{
-		child := GetClass(v.ClassId)
+		child := ClassGetAll(v.ClassId)
 		node := &models.ClassTreeList{
 			ClassId:v.ClassId,
 			Name:v.Name,

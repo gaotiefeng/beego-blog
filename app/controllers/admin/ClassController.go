@@ -15,7 +15,7 @@ type ClassController struct {
 func (this *ClassController)GetChild()  {
 	id,_ := this.GetInt("id")
 
-	class := Dao.GetClass(id)
+	class := Dao.ClassGetAll(id)
 
 	this.ResponseSuccess(constants.SUCCESS,"子集数据",class)
 }
@@ -58,7 +58,7 @@ func (this *ClassController) Save() {
 	name := this.GetString("name")
 	sort,_ := this.GetInt("sort",0)
 	pid,_ := this.GetInt("pid",0)
-	num,err := Admin.ClassSave(id,name,sort,pid)
+	num,err := Admin.ServiceAdminClassSave(id,name,sort,pid)
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"添加失败",num)
 	}
