@@ -2,6 +2,7 @@ package home
 
 import (
 	"beego/app/controllers"
+	"beego/app/models"
 	"beego/app/service"
 	"beego/app/service/Dao"
 )
@@ -27,7 +28,22 @@ func (this *BlogController) Index() {
 
 	treeList :=Dao.ClassGetAll(0)
 	this.Data["class"] = treeList
-	this.Data["count"] = Dao.ArticleDaoCount()
+	count := Dao.ArticleDaoCount(classId,childId)
+	this.Data["count"] = count
+	//	获取当前页码
+	page,_ := this.GetInt("page",1)
+	limit,_ := this.GetInt("limit",10)
+	offset := limit*(page-1)
+
+	_,data,_ := Dao.ArticleDaoList(offset,limit,classId,childId)
+	this.Data["data"] = data
+	// 分页数据
+	paginatorMap := models.Paginator(page,limit,count)
+	this.Data["paginator"]= paginatorMap //分页的数据
+
+	_,hotData,_ := Dao.ArticleDaoHotList(offset,limit,classId,childId)
+
+	this.Data["hot_data"] = hotData
 
 	this.TplName = "home/article/index.html"
 }

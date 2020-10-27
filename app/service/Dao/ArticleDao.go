@@ -32,13 +32,38 @@ func ArticleDaoList(offset int,limit int,classId int,childId int) (int64,*[]mode
 
 	return count,articleModel,err
 }
+//最近热文
+func ArticleDaoHotList(offset int,limit int,classId int,childId int) (int64,*[]models.Article,error) {
+	article := new(models.Article)
+	o := orm.NewOrm()
+	articleModel := new([]models.Article)
+
+	qs := o.QueryTable(article)
+	beego.Info(classId)
+	if classId != 0 {
+		qs = qs.Filter("class_id",classId)
+	}
+	if childId != 0 {
+		qs = qs.Filter("child_id",childId)
+	}
+	count,err := qs.Limit(limit,offset).OrderBy("-click").All(articleModel)
+
+	return count,articleModel,err
+}
 //总条数
-func ArticleDaoCount() (count int64) {
+func ArticleDaoCount(classId int,childId int) (count int64) {
 
 	article := new(models.Article)
 	o := orm.NewOrm()
-	count,_ = o.QueryTable(article).Count()
 
+	qs := o.QueryTable(article)
+	if classId != 0 {
+		qs = qs.Filter("class_id",classId)
+	}
+	if childId != 0 {
+		qs = qs.Filter("child_id",childId)
+	}
+	count,_ = qs.Count()
 	return count
 }
 //添加

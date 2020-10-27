@@ -26,7 +26,7 @@ func (this *ArticleController) List()  {
 	offset := (page-1) * limit
 
 	_,list,err := Dao.ArticleDaoList(offset,limit,classId,childId)
-	count := Dao.ArticleDaoCount()
+	count := Dao.ArticleDaoCount(classId,childId)
 	if err != nil {
 		this.ResponseError(constants.SERVERERROR,"查询失败",err)
 	}

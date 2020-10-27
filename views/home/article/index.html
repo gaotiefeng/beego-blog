@@ -33,111 +33,132 @@
 
 
 		<!-- 文章 开始 -->
-		<div class="main index_main">
-			<div class="page_left">
-				{{/*<ul class="page_left_list" >
-					{{range .data}}
-					<li class="no_pic">
-						<h2 class="title"><a href="/blog/detail?id={{.Id}}">{{.Name}}</a></h2>
-						<div class="date_hits">
-							<span>{{.CreatedAt}}</span>
-							<span><a href="/article-lists/11.html">{{.Name}}</a></span>
-							<span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
-							<p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i>
-								<span id="sourceId::1196" class="cy_cmt_count"></span>
-							</p>
-						</div>
-						<div class="desc">{{.Content}}</div>
-					</li>
-					{{end}}
-				</ul>*/}}
-				<ul class="page_left_list" id="data">
+<div class="main index_main">
+<div class="page_left">
+<ul class="page_left_list" >
+{{range .data}}
+{{if .Image}}
+<li class="">
+<a href="/article/detail?id={{.Id}}" class="pic">
+<img class="lazy" src="{{.Image}}" alt="{{.Name}}" style="display: inline-block;">
+</a>
+{{else}}
+<li class="no_pic">
+{{end}}
+<h2 class="title">
+<a href="/article/detail?id={{.Id}}">{{.Name}}</a></h2>
+<div class="date_hits">
+<span>{{.CreatedAt}}</span>
+<span><a href="/article/detail?id={{.Id}}">{{.Name}}</a></span>
+<span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
+<p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i>
+<span id="sourceId::1196" class="cy_cmt_count"></span>
+</p>
+</div>
+<div class="desc">{{.Content | str2html}}</div>
+</li>
 
-				</ul>
-				<div id="page" ></div>
-			</div>
-			<div class="page_right">
-				<div class="about_stationmaster_container">
-					<h3>博主信息</h3>
-					<ol class="page_right_list trans_3">
-						<li>姓名：tiefeng</li>
-						<li>职业：PHP/GO</li>
-						<li>座右铭：不论成功还是失败，都是系于自己。</li>
-					</ol>
-				</div>
-				<div class="new_list">
-					<h3>实用小工具</h3>
-					<ol class="page_right_list trans_3 index_notice">
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/short_url">短网址生成</a>
-						</li>
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/qrcode">二维码生成</a>
-						</li>
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/timestamp">时间戳在线转换</a>
-						</li>
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/md5_sha1">MD5、SHA1在线加密</a>
-						</li>
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/unicode">Unicode编码转换</a>
-						</li>
-						<li>
-							<a href="http://www.phplaozhang.com/index/tool/urlencode_urldecode">urlencode编码/urldecode解码</a>
-						</li>
-					</ol>
-				</div>
-				<div class="new_list">
-					<h3>温馨通道</h3>
-					<ol class="page_right_list trans_3 index_notice">
-						<li>
-							<a href="https://tool.lu/">在线工具</a>
-						</li>
-					</ol>
-				</div>
-				<a target="_blank" href="http://bingimage.phplaozhang.com/">
-					<div class="page_right_list trans_3 bingimage" style="padding:0;position: relative;display: none;">
-						<img src="" style="width: 100%;">
-						<p style="position: absolute;bottom:0;left:0;right:0;line-height: 24px;background:rgba(0,0,0,0.5);padding:5px 10px;font-size:12px;color:#fff;"></p>
-					</div>
-				</a>
+{{end}}
+</ul>
+<nav aria-label="Page navigation ">
+	<ul class="pagination pull-right">
+		<li ><a href="/?page={{.paginator.firstpage}}&class_id={{.class_id}}&child_id={{.child_id}}">«上一页</a></li>
+		{{range $index,$page := .paginator.pages}}
+			<li ><a href="/?class_id={{$.class_id}}&child_id={{$.child_id}}&page={{$page}}" {{if eq $.paginator.currpage $page }} style="background-color: #00B7FF;color: #fff;"{{end}}>{{$page}}</a></li>
+		{{end}}
+		<li><a href="/?page={{.paginator.lastpage}}&class_id={{.class_id}}&child_id={{.child_id}}">下一页»</a></li>
+		<li><span style="color: black">页数 ( {{ .paginator.currpage }}/{{.paginator.totalpages}} )</span></li>
+		<li><span style="color: black">总条数 ( {{ .count }})</span></li>
+	</ul>
+</nav>
+<ul class="page_left_list" id="data">
 
-				<div style="padding:0;background: #fff;">
-					<style type="text/css">
-						.layui-tab-title .layui-this:after {
-							border-color: #009688;
-							border-bottom-color: #fff;
-						}
-						
-						.layui-tab-title .layui-this {
-							color: #009688;
-						}
-					</style>
-
-				</div>
-
-
-				<div class="hot_list">
-					<h3>最近热文</h3>
-					<ol class="page_right_list trans_3">
-						<li>
-							<a href="/article/82.html">程序员的自我修养</a><span class="hits"> </span></li>
-						<li>
-							<a href="/article/23.html">一波程序员表情包</a><span class="hits"> 11080 ℃ </span></li>
-						<li>
-							<a href="/article/33.html">一波程序员表情包</a><span class="hits"> 8104 ℃ </span></li>
-					</ol>
-				</div>
-
-				<h3>友情连接</h3>
-				<div class="links trans_3">
-					<a href="http://daohang.lusongsong.com" target="_blank">博客大全</a>
-					<a href="http://www.jb51.net/" target="_blank">脚本之家下载</a>
-				</div>
-			</div>
-			<div class="clear"></div>
+</ul>
+<div id="page" ></div>
+</div>
+<div class="page_right">
+	<div class="about_stationmaster_container">
+		<h3>博主信息</h3>
+		<ol class="page_right_list trans_3">
+			<li>姓名：tiefeng</li>
+			<li>职业：PHP/GO</li>
+			<li>座右铭：不论成功还是失败，都是系于自己。</li>
+		</ol>
+	</div>
+	<div class="new_list">
+		<h3>实用小工具</h3>
+		<ol class="page_right_list trans_3 index_notice">
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/short_url">短网址生成</a>
+			</li>
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/qrcode">二维码生成</a>
+			</li>
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/timestamp">时间戳在线转换</a>
+			</li>
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/md5_sha1">MD5、SHA1在线加密</a>
+			</li>
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/unicode">Unicode编码转换</a>
+			</li>
+			<li>
+				<a href="http://www.phplaozhang.com/index/tool/urlencode_urldecode">urlencode编码/urldecode解码</a>
+			</li>
+		</ol>
+	</div>
+	<div class="new_list">
+		<h3>温馨通道</h3>
+		<ol class="page_right_list trans_3 index_notice">
+			<li>
+				<a href="https://tool.lu/">在线工具</a>
+			</li>
+		</ol>
+	</div>
+	<a target="_blank" href="http://bingimage.phplaozhang.com/">
+		<div class="page_right_list trans_3 bingimage" style="padding:0;position: relative;display: none;">
+			<img src="" style="width: 100%;">
+			<p style="position: absolute;bottom:0;left:0;right:0;line-height: 24px;background:rgba(0,0,0,0.5);padding:5px 10px;font-size:12px;color:#fff;"></p>
 		</div>
+	</a>
+
+	<div style="padding:0;background: #fff;">
+		<style type="text/css">
+			.layui-tab-title .layui-this:after {
+				border-color: #009688;
+				border-bottom-color: #fff;
+			}
+
+			.layui-tab-title .layui-this {
+				color: #009688;
+			}
+		</style>
+
+	</div>
+
+
+	<div class="hot_list">
+		<h3>最近热文</h3>
+		<ol class="page_right_list trans_3">
+			{{range .hot_data}}
+			<li>
+				<a href="/article/detail?id={{.Id}}">{{.Name}}</a>
+
+				<span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
+			</li>
+			{{end}}
+		</ol>
+	</div>
+
+	<h3>友情连接</h3>
+	<div class="links trans_3">
+		<a href="http://daohang.lusongsong.com" target="_blank">博客大全</a>
+		<a href="http://www.jb51.net/" target="_blank">脚本之家下载</a>
+	</div>
+</div>
+<div class="clear"></div>
+</div>
 		<!-- 文章 结束 -->
 		<script id="cy_cmt_num" src="//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysMsLdOg"></script>
 		<!-- 畅言评论数获取js -->
@@ -263,7 +284,7 @@ $('.footer').addClass('footer_fixed');
 
 <script src="/resources/jquery-3.3.1/jquery-3.3.1.js"></script>
 <script>
-	layui.use(['laypage', 'layer'], function(){
+	/*layui.use(['laypage', 'layer'], function(){
 		var classId = {{.class_id}}
 		var childId = {{.child_id}}
 		var laypage = layui.laypage;
@@ -319,6 +340,6 @@ $('.footer').addClass('footer_fixed');
 
 			}
 		});
-	});
+	});*/
 
 </script>

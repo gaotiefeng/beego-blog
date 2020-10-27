@@ -4,7 +4,7 @@
 <li id="fixbar_avatar" class="hidden"><img src="" alt="头像">
 <div class="fixbar_member_info trans_3"><span id="logout_btn">退了</span></div>
 </li>
-<li class="layui-icon qr_code">&#xe63b;<img class="qr_code_pic" src="/resources/1.png" alt="微信公众号二维码"></li>
+<li class="layui-icon qr_code">&#xe63b;<img class="qr_code_pic" src="/resources/1.jpg" alt="微信小程序"></li>
 <li class="layui-icon layui-fixbar-top" id="to_top">&#xe604;</li>
 </ul>
 <div class="layui-footer footer">
