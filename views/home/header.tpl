@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/resources/home/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/resources/home/css/wallpaper.css">
     <link rel="stylesheet" href="/resources/layui/css/layui.css?v=5">
-    <title>技匠精神</title>
+    <title>T博客网</title>
+    <meta name="keywords" content="T博客网" />
+    <meta name="description" content="T博客网" />
 </head>
 <body style="background-color:#e0e3ed;">
 <style>
