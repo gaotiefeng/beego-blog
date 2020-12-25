@@ -39,20 +39,21 @@
 {{range .data}}
 {{if .Image}}
 <li class="">
-<a href="/article/detail?id={{.Id}}" class="pic">
+<a href="/article/detail?id={{.Id}}" class="pic" title="{{.Name}}">
 <img class="lazy" src="{{.Image}}" alt="{{.Name}}" style="display: inline-block;">
 </a>
 {{else}}
 <li class="no_pic">
 {{end}}
 <h2 class="title">
-<a href="/article/detail?id={{.Id}}">{{.Name}}</a></h2>
+<a href="/article/detail?id={{.Id}}" title="{{.Name}}">
+	{{.Name}}
+</a></h2>
 <div class="date_hits">
 <span>{{.CreatedAt}}</span>
-<span><a href="/article/detail?id={{.Id}}">{{.Name}}</a></span>
+<span><a href="/article/detail?id={{.Id}}" title="{{.Name}}">{{.Name}}</a></span>
 <span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
 <p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i>
-<span id="sourceId::1196" class="cy_cmt_count"></span>
 </p>
 </div>
 <div class="desc">{{.Content | str2html}}</div>
@@ -89,9 +90,6 @@
 		<h3>实用小工具</h3>
 		<ol class="page_right_list trans_3 index_notice">
 			<li>
-				<a href="http://www.phplaozhang.com/index/tool/short_url">短网址生成</a>
-			</li>
-			<li>
 				<a href="http://www.phplaozhang.com/index/tool/qrcode">二维码生成</a>
 			</li>
 			<li>
@@ -103,9 +101,7 @@
 			<li>
 				<a href="http://www.phplaozhang.com/index/tool/unicode">Unicode编码转换</a>
 			</li>
-			<li>
-				<a href="http://www.phplaozhang.com/index/tool/urlencode_urldecode">urlencode编码/urldecode解码</a>
-			</li>
+
 		</ol>
 	</div>
 	<div class="new_list">
