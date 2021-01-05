@@ -4,6 +4,7 @@ body{background-color:#eee;min-height: 100%;min-width: 320px;font-family: 'Micro
 ::selection{background-color:#01AAED;color:#fff;}
 ::-moz-selection{background-color:#01AAED;color:#fff;}
 .clear{height:0;clear: both;}
+.top30{margin-top:30px;}
 .fill_1{clear: both;height: 1px}
 .fill_5{clear: both;height: 5px}
 .fill_10{clear: both;height: 10px}
