@@ -5,6 +5,8 @@ body{background-color:#eee;min-height: 100%;min-width: 320px;font-family: 'Micro
 ::-moz-selection{background-color:#01AAED;color:#fff;}
 .clear{height:0;clear: both;}
 .top30{margin-top:30px;}
+.fl{float: left;}
+.fr{float: right;}
 .fill_1{clear: both;height: 1px}
 .fill_5{clear: both;height: 5px}
 .fill_10{clear: both;height: 10px}
@@ -133,11 +135,11 @@ transition: all 0.3s linear;
 -o-transition: all 0.3s linear; /* Opera */}
 .page_left_list .no_pic{padding:15px;}
 .page_left_list li:hover{border-color:#01AAED;box-shadow:0px 1px 16px -8px #000;}
-.page_left_list li .pic{position: absolute;left: 15px;top: 15px;height: 110px;overflow: hidden;line-height: 110px;width:165px;}
+.page_left_list li .pic{position: absolute;left: 15px;top: 35px;height: 110px;overflow: hidden;line-height: 110px;width:165px;}
 .page_left_list li .pic img{vertical-align: middle;width:100%;}
 .page_left_list li .title{line-height: 26px;font-size: 0;position: relative;}
 .page_left_list li .title *{display: inline-block;vertical-align: top;}
-.page_left_list li .title a{max-width: 99%;margin-right: 10px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 22px;line-height: 26px;}
+.page_left_list li .title a{max-width: 99%;margin-right: 10px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 20px;line-height: 26px;}
 .page_left_list li .title a:hover{color:#01AAED;}
 .page_left_list li .title a .top{font-size: 12px;display: inline-block;line-height: 20px;background: #f50000;border-radius: 2px;color:#fff;padding:0 5px;margin-top:3px;margin-right: 5px;}
 .page_left_list li .date_hits{position: relative;line-height: 20px;font-size: 16px;color: #666;}
