@@ -2,7 +2,7 @@
 		<div class="header_back"></div>
 		<!-- 头部 结束 -->
 		<!-- 左边导航 开始 -->
-		{{/*<div class="layui-side layui-bg-black left_nav trans_2">
+		<!--<div class="layui-side layui-bg-black left_nav trans_2">
 			<div class="layui-side-scroll">
 				<ul class="layui-nav layui-nav-tree" lay-filter="left_nav">
 					<li class="layui-nav-item home">
@@ -11,7 +11,7 @@
 					<li class="layui-nav-item">
 						<a href="javascript:void();">学无止境</a>
 						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
+							&lt;!&ndash; 二级菜单 &ndash;&gt;
 							<dd>
 								<a href="/article-lists/8.html">杂谈</a>
 							</dd>
@@ -38,7 +38,7 @@
 					<li class="layui-nav-item">
 						<a href="javascript:void();">分享无价</a>
 						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
+							&lt;!&ndash; 二级菜单 &ndash;&gt;
 							<dd>
 								<a href="/download-lists/13.html">源码分享</a>
 							</dd>
@@ -56,7 +56,7 @@
 					<li class="layui-nav-item">
 						<a href="javascript:void();">关于</a>
 						<dl class="layui-nav-child">
-							<!-- 二级菜单 -->
+							&lt;!&ndash; 二级菜单 &ndash;&gt;
 							<dd>
 								<a href="/page/6.html">关于LzCMS</a>
 							</dd>
@@ -67,7 +67,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>*/}}
+		</div>-->
 		<div class="left_nav_mask"></div>
 		<div class="left_nav_btn"><i class="layui-icon">&#xe602;</i></div>
 		<!-- 左边导航 结束 -->
@@ -104,10 +104,18 @@
 					</div>
 					<div class="prev_next">
 						<div class="prev">上一篇：
+							{{if .pre.Name}}
 							<a href="/article/detail?id={{.pre.Id}}">{{.pre.Name}}</a>
+							{{else}}
+							无
+							{{end}}
 						</div>
 						<div class="next">下一篇：
+							{{if .next.Name}}
                             <a href="/article/detail?id={{.next.Id}}">{{.next.Name}}</a>
+							{{else}}
+							无
+							{{end}}
 						</div>
 						<div class="clear"></div>
 					</div>
