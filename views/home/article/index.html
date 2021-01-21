@@ -62,11 +62,11 @@
 </ul>
 <nav aria-label="Page navigation ">
 <ul class="pagination pull-right">
-<li ><a href="/?page={{.paginator.firstpage}}&class_id={{.class_id}}&child_id={{.child_id}}">«上一页</a></li>
+<li ><a href="/index?page={{.paginator.firstpage}}&class_id={{.class_id}}&child_id={{.child_id}}">«上一页</a></li>
 {{range $index,$page := .paginator.pages}}
-<li ><a href="/?class_id={{$.class_id}}&child_id={{$.child_id}}&page={{$page}}" {{if eq $.paginator.currpage $page }} style="background-color: #00B7FF;color: #fff;"{{end}}>{{$page}}</a></li>
+<li ><a href="/index?class_id={{$.class_id}}&child_id={{$.child_id}}&page={{$page}}" {{if eq $.paginator.currpage $page }} style="background-color: #00B7FF;color: #fff;"{{end}}>{{$page}}</a></li>
 {{end}}
-<li><a href="/?page={{.paginator.lastpage}}&class_id={{.class_id}}&child_id={{.child_id}}">下一页»</a></li>
+<li><a href="/index?page={{.paginator.lastpage}}&class_id={{.class_id}}&child_id={{.child_id}}">下一页»</a></li>
 <li><span style="color: black">页数 ( {{ .paginator.currpage }}/{{.paginator.totalpages}} )</span></li>
 <li><span style="color: black">总条数 ( {{ .count }})</span></li>
 </ul>

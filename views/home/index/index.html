@@ -53,13 +53,15 @@ padding-bottom: 10px;
                     {{end}}
                 </div>
                 <div class="layui-card-body">
-                    {{range .Art}}
-                    <p>
-                        <a href="/article/detail?id={{.Id}}">
-                            {{.Name}}
-                        </a>
-                    </p>
-                    {{end}}
+                    <ol class="page_right_list trans_3">
+                        {{range .Art}}
+                        <li>
+                            <a href="/article/detail?id={{.Id}}">
+                                {{.Name}}
+                            </a>
+                        </li>
+                        {{end}}
+                    </ol>
                 </div>
             </div>
         </div>
@@ -76,14 +78,17 @@ padding-bottom: 10px;
             <li>座右铭：不论成功还是失败，都是系于自己。</li>
         </ol>
     </div>
-    <div class="layui-card ">
-        <div class="layui-card-body trans_3 page_right_list index_notice">
+    <div class="layui-card new_list">
+        <div class="layui-card-body trans_3 page_right_list">
+            <ol class="page_right_list trans_3">
             {{range .article }}
-            <p>
-                <a href="/article/detail?id={{.Id}}">
-               {{.Name}}</a>
-            </p>
+                <li>
+                    <a href="/article/detail?id={{.Id}}">
+                        {{.Name}}
+                    </a>
+                </li>
             {{end}}
+            </ol>
         </div>
     </div>
     <div class="new_list">
