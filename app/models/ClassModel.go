@@ -15,13 +15,14 @@ type Class struct {
 }
 
 type ClassTreeList struct {
-	ClassId int	`orm:"column(class_id);auto" description:"class_id" json:"class_id"`
-	Name string	`orm:"column(class_name)" description:"class_name" json:"class_name"`
-	Sort	int	`orm:"column(sort)" description:"sort" json:"sort"`
-	Pid	int	`orm:"column(pid)" description:"pid" json:"pid"`
-	Link	string	`orm:"column(link)" description:"link" json:"link"`
-	CreatedAt time.Time	`orm:"column(created_at)"  description:"created_at" json:"created_at"`
-	Children []*ClassTreeList	`json:"children"`
+	ClassId   int              `orm:"column(class_id);auto" description:"class_id" json:"class_id"`
+	Name      string           `orm:"column(class_name)" description:"class_name" json:"class_name"`
+	Sort      int              `orm:"column(sort)" description:"sort" json:"sort"`
+	Pid       int              `orm:"column(pid)" description:"pid" json:"pid"`
+	Link      string           `orm:"column(link)" description:"link" json:"link"`
+	CreatedAt time.Time        `orm:"column(created_at)"  description:"created_at" json:"created_at"`
+	Children  []*ClassTreeList `json:"children"`
+	Art       *[]Article
 }
 
 func (u *Class) TableName() string {

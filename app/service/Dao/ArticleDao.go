@@ -28,7 +28,7 @@ func ArticleDaoList(offset int,limit int,classId int,childId int) (int64,*[]mode
 	if childId != 0 {
 		qs = qs.Filter("child_id",childId)
 	}
-	count,err := qs.Limit(limit,offset).All(articleModel)
+	count,err := qs.Limit(limit,offset).OrderBy("-created_at").All(articleModel)
 
 	return count,articleModel,err
 }

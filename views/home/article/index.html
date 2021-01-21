@@ -1,38 +1,37 @@
 {{template "home/header.tpl" .}}
-		<!-- banner 开始 -->
-		{{/*<div class="banner" style="background:#393D49">
-			<div class="main index_main">
-				<img class="banner_pic" src="{{.banner}}" alt="banner">
-			</div>
-		</div>*/}}
-		<div class="main index_main">
-			<ul class="index-learn">
-				<li>
-					<fieldset class="layui-elem-field layui-field-title">
-						<legend>精简</legend>
-						<p>性能的关键是精简，而不是一堆的优化用例。除非有真正显著的效果，否则一定要忍住你那些蠢蠢欲动的小微调的企图。</p>
-					</fieldset>
-				</li>
-				<li>
-					<fieldset class="layui-elem-field layui-field-title">
-						<legend>方法</legend>
-						<p>世上有两种设计软件的方法。一种是尽量的简化，以至于明显没有任何缺陷。而另一种是尽量复杂化，以至于找不到明显的缺陷。</p>
-					</fieldset>
-				</li>
-				<li>
-					<fieldset class="layui-elem-field layui-field-title">
-						<legend>勤</legend>
-						<p>自古以来学有建树的人，都离不开一个“勤”字。</p>
-					</fieldset>
-				</li>
-			</ul>
-		</div>
-		<div class="main index_main lzcms_banner">
-			<a href="#" target="_blank"><img src="{{.home_banner}}" alt="banner"></a>
-		</div>
+<!-- banner 开始 -->
+{{/*<div class="banner" style="background:#393D49">
+<div class="main index_main">
+<img class="banner_pic" src="{{.banner}}" alt="banner">
+</div>
+</div>*/}}
+<div class="main index_main">
+<ul class="index-learn">
+<li>
+<fieldset class="layui-elem-field layui-field-title">
+<legend>精简</legend>
+<p>性能的关键是精简，而不是一堆的优化用例。除非有真正显著的效果，否则一定要忍住你那些蠢蠢欲动的小微调的企图。</p>
+</fieldset>
+</li>
+<li>
+<fieldset class="layui-elem-field layui-field-title">
+<legend>方法</legend>
+<p>世上有两种设计软件的方法。一种是尽量的简化，以至于明显没有任何缺陷。而另一种是尽量复杂化，以至于找不到明显的缺陷。</p>
+</fieldset>
+</li>
+<li>
+<fieldset class="layui-elem-field layui-field-title">
+<legend>勤</legend>
+<p>自古以来学有建树的人，都离不开一个“勤”字。</p>
+</fieldset>
+</li>
+</ul>
+</div>
+<div class="main index_main lzcms_banner">
+<a href="#" target="_blank"><img src="{{.home_banner}}" alt="banner"></a>
+</div>
 
-
-		<!-- 文章 开始 -->
+<!-- 文章 开始 -->
 <div class="main index_main">
 <div class="page_left">
 <ul class="page_left_list" >
@@ -47,7 +46,7 @@
 {{end}}
 <h2 class="title">
 <a href="/article/detail?id={{.Id}}" title="{{.Name}}">
-	{{.Name}}
+{{.Name}}
 </a></h2>
 <div class="date_hits">
 <span>{{.CreatedAt}}</span>
@@ -62,15 +61,15 @@
 {{end}}
 </ul>
 <nav aria-label="Page navigation ">
-	<ul class="pagination pull-right">
-		<li ><a href="/?page={{.paginator.firstpage}}&class_id={{.class_id}}&child_id={{.child_id}}">«上一页</a></li>
-		{{range $index,$page := .paginator.pages}}
-			<li ><a href="/?class_id={{$.class_id}}&child_id={{$.child_id}}&page={{$page}}" {{if eq $.paginator.currpage $page }} style="background-color: #00B7FF;color: #fff;"{{end}}>{{$page}}</a></li>
-		{{end}}
-		<li><a href="/?page={{.paginator.lastpage}}&class_id={{.class_id}}&child_id={{.child_id}}">下一页»</a></li>
-		<li><span style="color: black">页数 ( {{ .paginator.currpage }}/{{.paginator.totalpages}} )</span></li>
-		<li><span style="color: black">总条数 ( {{ .count }})</span></li>
-	</ul>
+<ul class="pagination pull-right">
+<li ><a href="/?page={{.paginator.firstpage}}&class_id={{.class_id}}&child_id={{.child_id}}">«上一页</a></li>
+{{range $index,$page := .paginator.pages}}
+<li ><a href="/?class_id={{$.class_id}}&child_id={{$.child_id}}&page={{$page}}" {{if eq $.paginator.currpage $page }} style="background-color: #00B7FF;color: #fff;"{{end}}>{{$page}}</a></li>
+{{end}}
+<li><a href="/?page={{.paginator.lastpage}}&class_id={{.class_id}}&child_id={{.child_id}}">下一页»</a></li>
+<li><span style="color: black">页数 ( {{ .paginator.currpage }}/{{.paginator.totalpages}} )</span></li>
+<li><span style="color: black">总条数 ( {{ .count }})</span></li>
+</ul>
 </nav>
 <ul class="page_left_list" id="data">
 
@@ -78,95 +77,95 @@
 <div id="page" ></div>
 </div>
 <div class="page_right">
-	<div class="about_stationmaster_container">
-		<h3>博主信息</h3>
-		<ol class="page_right_list trans_3">
-			<li>姓名：tiefeng</li>
-			<li>职业：程序猿</li>
-			<li>座右铭：不论成功还是失败，都是系于自己。</li>
-		</ol>
-	</div>
-	<div class="new_list">
-		<h3>实用小工具</h3>
-		<ol class="page_right_list trans_3 index_notice">
-			<li>
-				<a href="http://www.phplaozhang.com/index/tool/qrcode">二维码生成</a>
-			</li>
-			<li>
-				<a href="http://www.phplaozhang.com/index/tool/timestamp">时间戳在线转换</a>
-			</li>
-			<li>
-				<a href="http://www.phplaozhang.com/index/tool/md5_sha1">MD5、SHA1在线加密</a>
-			</li>
-			<li>
-				<a href="http://www.phplaozhang.com/index/tool/unicode">Unicode编码转换</a>
-			</li>
+<div class="about_stationmaster_container">
+<h3>博主信息</h3>
+<ol class="page_right_list trans_3">
+<li>姓名：tiefeng</li>
+<li>职业：程序猿</li>
+<li>座右铭：不论成功还是失败，都是系于自己。</li>
+</ol>
+</div>
+<div class="new_list">
+<h3>实用小工具</h3>
+<ol class="page_right_list trans_3 index_notice">
+<li>
+<a href="http://www.phplaozhang.com/index/tool/qrcode">二维码生成</a>
+</li>
+<li>
+<a href="http://www.phplaozhang.com/index/tool/timestamp">时间戳在线转换</a>
+</li>
+<li>
+<a href="http://www.phplaozhang.com/index/tool/md5_sha1">MD5、SHA1在线加密</a>
+</li>
+<li>
+<a href="http://www.phplaozhang.com/index/tool/unicode">Unicode编码转换</a>
+</li>
 
-		</ol>
-	</div>
-	<div class="new_list">
-		<h3>温馨通道</h3>
-		<ol class="page_right_list trans_3 index_notice">
-			<li>
-				<a href="https://tool.lu/">在线工具</a>
-			</li>
-		</ol>
-	</div>
-	<a target="_blank" href="http://bingimage.phplaozhang.com/">
-		<div class="page_right_list trans_3 bingimage" style="padding:0;position: relative;display: none;">
-			<img src="" style="width: 100%;">
-			<p style="position: absolute;bottom:0;left:0;right:0;line-height: 24px;background:rgba(0,0,0,0.5);padding:5px 10px;font-size:12px;color:#fff;"></p>
-		</div>
-	</a>
+</ol>
+</div>
+<div class="new_list">
+<h3>温馨通道</h3>
+<ol class="page_right_list trans_3 index_notice">
+<li>
+<a href="https://tool.lu/">在线工具</a>
+</li>
+</ol>
+</div>
+<a target="_blank" href="http://bingimage.phplaozhang.com/">
+<div class="page_right_list trans_3 bingimage" style="padding:0;position: relative;display: none;">
+<img src="" style="width: 100%;">
+<p style="position: absolute;bottom:0;left:0;right:0;line-height: 24px;background:rgba(0,0,0,0.5);padding:5px 10px;font-size:12px;color:#fff;"></p>
+</div>
+</a>
 
-	<div style="padding:0;background: #fff;">
-		<style type="text/css">
-			.layui-tab-title .layui-this:after {
-				border-color: #009688;
-				border-bottom-color: #fff;
-			}
+<div style="padding:0;background: #fff;">
+<style type="text/css">
+.layui-tab-title .layui-this:after {
+border-color: #009688;
+border-bottom-color: #fff;
+}
 
-			.layui-tab-title .layui-this {
-				color: #009688;
-			}
-		</style>
+.layui-tab-title .layui-this {
+color: #009688;
+}
+</style>
 
-	</div>
+</div>
 
 
-	<div class="hot_list">
-		<h3>最近热文</h3>
-		<ol class="page_right_list trans_3">
-			{{range .hot_data}}
-			<li>
-				<a href="/article/detail?id={{.Id}}">{{.Name}}</a>
+<div class="hot_list">
+<h3>最近热文</h3>
+<ol class="page_right_list trans_3">
+{{range .hot_data}}
+<li>
+<a href="/article/detail?id={{.Id}}">{{.Name}}</a>
 
-				<span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
-			</li>
-			{{end}}
-		</ol>
-	</div>
+<span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>{{.Click}}</span>
+</li>
+{{end}}
+</ol>
+</div>
 
-	<h3>友情连接</h3>
-	<div class="links trans_3">
-		<a href="https://www.32e.top/" target="_blank">博文家</a>
-	</div>
+<h3>友情连接</h3>
+<div class="links trans_3">
+<a href="https://www.32e.top/" target="_blank">博文家</a>
+</div>
 </div>
 <div class="clear"></div>
 </div>
-		<!-- 文章 结束 -->
-		<script id="cy_cmt_num" src="//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysMsLdOg"></script>
-		<!-- 畅言评论数获取js -->
+<!-- 文章 结束 -->
+<script id="cy_cmt_num" src="//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysMsLdOg"></script>
+<!-- 畅言评论数获取js -->
 {{template "home/footer.tpl" }}
 
 <script>
-	var param = '{$param}';
+var param = '{$param}';
 </script>
 <script type="text/javascript" src="/resources/layui/layui.all.js?v=6" ></script>
 <script type="text/javascript" src="/resources/jquery-3.3.1/jquery-3.3.1.min.js" ></script>
 </body>
 </html>
-		
+
 <script type="text/javascript">
 var form, layer, upload, $;
 //实例化layui对象
@@ -206,14 +205,14 @@ $('.header .head_search .search_input').attr('placeholder', '搜索');
 $('#fixbar_avatar').click(function() {
 if($('#fixbar_avatar .fixbar_member_info').is(":visible")) {
 $('#fixbar_avatar .fixbar_member_info').hide().css({
-	'opacity': 0,
-	'right': '70px'
+'opacity': 0,
+'right': '70px'
 });
 
 } else {
 $('#fixbar_avatar .fixbar_member_info').show().animate({
-	'opacity': 1,
-	'right': '50px'
+'opacity': 1,
+'right': '50px'
 }, 50);
 }
 });
@@ -235,21 +234,21 @@ shade: [0.2, '#000'] //0.2透明度的白色背景
 });
 $.post('/index/member/logout.html', function(data) {
 if(data.code == 200) {
-	layer.close(loading);
-	layer.msg(data.msg, {
-		icon: 1,
-		time: 1000
-	}, function() {
-		$('#fixbar_avatar').hide()
-		//location.reload();//do something
-	});
+layer.close(loading);
+layer.msg(data.msg, {
+icon: 1,
+time: 1000
+}, function() {
+$('#fixbar_avatar').hide()
+//location.reload();//do something
+});
 } else {
-	layer.close(loading);
-	layer.msg(data.msg, {
-		icon: 2,
-		anim: 6,
-		time: 1000
-	});
+layer.close(loading);
+layer.msg(data.msg, {
+icon: 2,
+anim: 6,
+time: 1000
+});
 }
 });
 });
@@ -279,62 +278,62 @@ $('.footer').addClass('footer_fixed');
 
 <script src="/resources/jquery-3.3.1/jquery-3.3.1.js"></script>
 <script>
-	/*layui.use(['laypage', 'layer'], function(){
-		var classId = {{.class_id}}
-		var childId = {{.child_id}}
-		var laypage = layui.laypage;
-		var data = [];
-		var nums = 0; //每页出现的数据量
-		var limit = 6;
-		var count = {{.count}};
-		//模拟渲染
-		var render = function(data, curr){
-			var arr = []
-			//thisData = data.concat().splice(curr*nums-nums, nums);
-			thisData = data.concat();
-			layui.each(thisData, function(index, item){
-				if(item.image == "") {
-					arr.push('<li class="no_pic">' +
-							'<a href="/article/detail?id='+item.id+'"></a><h2>'+item.name+'</h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
-							'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
-							item.click+'</span><p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i><span id="sourceId::1196" class="cy_cmt_count"></span>'+
-							'</p></div><a href="/article/detail?id='+item.id+'"><div class="desc">'+item.content+'</div></a></li>');
-				}else {
-					arr.push('<li class=""><a href="/article/detail?id='+item.id+'" class="pic">' +
-							'<img class="lazy"  src="'+item.image+'" alt="'+item.name+'" style="display: inline-block;"></a>' +
-							'<h2 class="title"><a href="/article/detail?id='+item.id+'">'+item.name+'</a></h2><div class="date_hits"><span>'+item.created_at+'</span><span></span><span>' +
-							'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="'+item.click+'"></i>'+item.click+'</span>' +
-							'<p class="commonts"><i class="layui-icon" title="点击量"></i> ' +
-							'<span id="sourceId::1190" class="cy_cmt_count">5</span></p></div><a href="/article/detail?id='+item.id+'">' +
-							'<div class="desc">'+item.content+'</div></a></li>');
-				}
+/*layui.use(['laypage', 'layer'], function(){
+var classId = {{.class_id}}
+var childId = {{.child_id}}
+var laypage = layui.laypage;
+var data = [];
+var nums = 0; //每页出现的数据量
+var limit = 6;
+var count = {{.count}};
+//模拟渲染
+var render = function(data, curr){
+var arr = []
+//thisData = data.concat().splice(curr*nums-nums, nums);
+thisData = data.concat();
+layui.each(thisData, function(index, item){
+if(item.image == "") {
+arr.push('<li class="no_pic">' +
+'<a href="/article/detail?id='+item.id+'"></a><h2>'+item.name+'</h2><div class="date_hits"><span>'+item.created_at+'</span><span>' +
+'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="点击量">&#xe62c;</i>'+
+item.click+'</span><p class="commonts"><i class="layui-icon" title="点击量">&#xe63a;</i><span id="sourceId::1196" class="cy_cmt_count"></span>'+
+'</p></div><a href="/article/detail?id='+item.id+'"><div class="desc">'+item.content+'</div></a></li>');
+}else {
+arr.push('<li class=""><a href="/article/detail?id='+item.id+'" class="pic">' +
+'<img class="lazy"  src="'+item.image+'" alt="'+item.name+'" style="display: inline-block;"></a>' +
+'<h2 class="title"><a href="/article/detail?id='+item.id+'">'+item.name+'</a></h2><div class="date_hits"><span>'+item.created_at+'</span><span></span><span>' +
+'<a href="/article/detail?id='+item.id+'">'+item.name+'</a></span><span class="hits"><i class="layui-icon" title="'+item.click+'"></i>'+item.click+'</span>' +
+'<p class="commonts"><i class="layui-icon" title="点击量"></i> ' +
+'<span id="sourceId::1190" class="cy_cmt_count">5</span></p></div><a href="/article/detail?id='+item.id+'">' +
+'<div class="desc">'+item.content+'</div></a></li>');
+}
 
-			});
-			return arr.join('');
-		};
+});
+return arr.join('');
+};
 
-		//调用分页
-		laypage.render({
-			elem: 'page'
-			,limit:limit
-			,count:count
-			,pages: Math.ceil(data.length/nums) //得到总页数
-			,jump: function(obj){
-				var data = [];
-				$.ajax({
-					url:'article/list'
-					,type:"POST"
-					,dataType: "json"
-					,data:{offset:obj.curr,limit: limit,class_id:classId,child_id:childId}
-					,success: function (r_data) {
-						count = r_data.data.count
-						data = r_data.data.items
-						document.getElementById('data').innerHTML = render(data, obj.curr);
-					}
-				})
+//调用分页
+laypage.render({
+elem: 'page'
+,limit:limit
+,count:count
+,pages: Math.ceil(data.length/nums) //得到总页数
+,jump: function(obj){
+var data = [];
+$.ajax({
+url:'article/list'
+,type:"POST"
+,dataType: "json"
+,data:{offset:obj.curr,limit: limit,class_id:classId,child_id:childId}
+,success: function (r_data) {
+count = r_data.data.count
+data = r_data.data.items
+document.getElementById('data').innerHTML = render(data, obj.curr);
+}
+})
 
-			}
-		});
-	});*/
+}
+});
+});*/
 
 </script>

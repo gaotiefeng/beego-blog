@@ -1,108 +1,134 @@
 {{template "home/header.tpl" .}}
 <style>
-    .content{max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-    }
-    .layui-card-header{
-        height: 80%;
-    }
-    .main-top {height: 40px;line-height: 40px;}
-    .article{padding-right: 10px;}
-    .article img{height: 120px;width: 180px;}
-    .list_right{
-        position: relative;
-        top: 0;
-        float: right;
-        width: 28%;
-    }
-    .list_left {
-        width: 70%;
-        float: left;
-        padding-bottom: 10px;
-    }
+.content{max-width: 1200px;
+margin: 0 auto;
+position: relative;
+}
+.layui-card-header{
+height: 80%;
+}
+.main-top {height: 40px;line-height: 40px;}
+.article{padding-right: 10px;}
+.article img{height: 120px;width: 180px;}
+.list_right{
+position: relative;
+top: 0;
+float: right;
+width: 28%;
+}
+.list_left {
+width: 70%;
+float: left;
+padding-bottom: 10px;
+}
 </style>
 <div>
 
-    <div class="content main">
-        <!--banner-->
-        <div class="layui-carousel" id="banner">
-            <div carousel-item>
-                <img class="banner_pic" src="{{.banner}}" alt="banner" width="100%">
-                <img class="banner_pic" src="{{.home_banner}}" alt="banner" width="100%">
-                <img class="banner_pic" src="{{.banner}}" alt="banner" width="100%">
-                <img class="banner_pic" src="{{.home_banner}}" alt="banner" width="100%">
-            </div>
-        </div>
-        <div class="top30"></div>
-        <!--分类文章-->
-        <div class="list_left">
-        <div class="layui-row layui-col-space9">
-                {{range .class}}
-                <div class="layui-col-xs8 layui-col-md12">
-                    <!-- 填充内容 -->
-                    <div class="layui-card">
-                        <div class="layui-card-header">
-                            {{.Name}}
-                            {{range .Children}}
-                            {{.Name}}
-                            {{end}}
-                        </div>
-                        <div class="layui-card-body">
-
-                            <p>
-                                幸福，幸福，幸福，幸福，幸福，
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                {{end}}
-        </div>
-        </div>
-        <!--fr 右侧-->
-        <div class="list_right">
+<div class="content main">
+<!--banner-->
+<div class="layui-carousel" id="banner">
+    <div carousel-item>
+        <img class="banner_pic" src="{{.banner}}" alt="banner" width="100%">
+        <img class="banner_pic" src="{{.home_banner}}" alt="banner" width="100%">
+        <img class="banner_pic" src="{{.banner}}" alt="banner" width="100%">
+        <img class="banner_pic" src="{{.home_banner}}" alt="banner" width="100%">
+    </div>
+</div>
+<div class="top30"></div>
+<!--分类文章-->
+<div class="list_left">
+<div class="layui-row layui-col-space9">
+        {{range .class}}
+        <div class="layui-col-xs8 layui-col-md12">
+            <!-- 填充内容 -->
             <div class="layui-card">
+                <div class="layui-card-header">
+                    <span><a href="/index?class_id={{.ClassId}}">
+                        {{.Name}}</a>
+                    </span>
+                    {{range .Children}}
+                    <a href="/index?child_id={{.ClassId}}">
+                    {{.Name}}
+                    </a>
+                    {{end}}
+                </div>
                 <div class="layui-card-body">
+                    {{range .Art}}
                     <p>
-                        幸福，幸福，幸福，幸福，幸福，
+                        <a href="/article/detail?id={{.Id}}">
+                            {{.Name}}
+                        </a>
                     </p>
-                    <p>
-                        幸福，幸福，幸福，幸福，幸福，
-                    </p>
+                    {{end}}
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
-        <!--fr 底部-->
-        <div class="top30"></div>
-        <div class="layui-card">
-            <div class="layui-card-body">
-                <pre class="layui-code">
-                //代码区域
-                var a = 'hello layui';
-                </pre>
-            </div>
+        {{end}}
+</div>
+</div>
+<!--fr 右侧-->
+<div class="list_right">
+    <div class="about_stationmaster_container">
+        <ol class="page_right_list trans_3">
+            <h3>博主信息</h3>
+            <li>姓名：tiefeng</li>
+            <li>职业：程序猿</li>
+            <li>座右铭：不论成功还是失败，都是系于自己。</li>
+        </ol>
+    </div>
+    <div class="layui-card ">
+        <div class="layui-card-body trans_3 page_right_list index_notice">
+            {{range .article }}
+            <p>
+                <a href="/article/detail?id={{.Id}}">
+               {{.Name}}</a>
+            </p>
+            {{end}}
         </div>
     </div>
+    <div class="new_list">
+        <ol class="page_right_list trans_3 index_notice">
+            <h3>温馨通道</h3>
+            <li>
+                <a href="https://tool.lu/">在线工具</a>
+            </li>
+            <li>
+                <a href="https://www.32e.top/" target="_blank">博文家</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="clear"></div>
+<!--fr 底部-->
+<div class="top30"></div>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <pre class="layui-code">
+        //代码区域
+        var a = 'hello layui';
+        </pre>
+    </div>
+</div>
+</div>
 </div>
 {{template "home/footer.tpl" }}
 <script type="text/javascript" src="/resources/layui/layui.all.js?v=6" ></script>
 <script type="text/javascript" src="/resources/jquery-3.3.1/jquery-3.3.1.min.js" ></script>
 <script type="text/javascript">
-    var form, layer, upload, $;
-    //实例化layui对象
-    form = layui.form;
-    layer = layui.layer;
-    upload = layui.upload;
-    $ = layui.$;
-    layui.use('carousel', function(){
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#banner'
-            ,width: '100%' //设置容器宽度
-            ,arrow: 'always' //始终显示箭头
-            //,anim: 'updown' //切换动画方式
-        });
-    });
+var form, layer, upload, $;
+//实例化layui对象
+form = layui.form;
+layer = layui.layer;
+upload = layui.upload;
+$ = layui.$;
+layui.use('carousel', function(){
+var carousel = layui.carousel;
+//建造实例
+carousel.render({
+    elem: '#banner'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+});
+});
 </script>

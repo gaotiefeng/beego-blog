@@ -40,12 +40,12 @@
 					</li>
 					{{range .class}}
 					<li class="layui-nav-item">
-						<a href="/?class_id={{.ClassId}}">{{.Name}}</a>
+						<a href="/index?class_id={{.ClassId}}">{{.Name}}</a>
 						<dl class="layui-nav-child">
 							<!-- 二级菜单 -->
 							{{range .Children}}
 							<dd>
-								<a href="/?child_id={{.ClassId}}">{{.Name}}</a>
+								<a href="/index?child_id={{.ClassId}}">{{.Name}}</a>
 							</dd>
 							{{end}}
 						</dl>
