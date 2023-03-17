@@ -102,8 +102,8 @@ CREATE TABLE `config` (
 -- Records of config
 -- ----------------------------
 INSERT INTO `config` VALUES ('1', 'host', 'http://www.tfuu.cn');
-INSERT INTO `config` VALUES ('2', 'home_banner', 'https://images.tfuu.cn/home_banner.jpg');
-INSERT INTO `config` VALUES ('3', 'banner', 'https://images.tfuu.cn/banner.jpg');
+INSERT INTO `config` VALUES ('2', 'home_banner', 'http://image.tfuu.cn/home_banner.jpg');
+INSERT INTO `config` VALUES ('3', 'banner', 'http://image.tfuu.cn/banner.jpg');
 INSERT INTO `config` VALUES ('4', 'title_1', '技匠精神');
 INSERT INTO `config` VALUES ('5', 'des_1', '精益求精，注重细节，追求完美和极致，不惜花费时间精力，孜孜不倦，反复改进产品，把99%提高到99.99%。');
 
